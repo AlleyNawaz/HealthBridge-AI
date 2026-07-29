@@ -1,0 +1,913 @@
+[
+  {
+    "id": "session-1785354167753-l5dozr",
+    "timestamp": "2026-07-29T19:42:47.756Z",
+    "userQuery": "I want to end my life",
+    "result": {
+      "language": "English",
+      "symptoms": [
+        "I want to end my life"
+      ],
+      "duration": "N/A",
+      "severity": "Critical",
+      "urgency": "Emergency",
+      "possible_causes": [
+        "Mental Health Crisis"
+      ],
+      "next_steps": [
+        "कृपया तुरंत किसी संकट हेल्पलाइन से संपर्क करें। आप अकेले नहीं हैं, और मदद उपलब्ध है। (Please immediately contact a crisis helpline. You are not alone, and help is available.)",
+        "किसी विश्वसनीय दोस्त या परिवार के सदस्य को कॉल करें।"
+      ],
+      "warning_signs": [
+        "आत्महत्या के विचार आना (Thoughts of suicide)",
+        "खुद को नुकसान पहुँचाने की योजना बनाना (Planning self-harm)"
+      ],
+      "emergency": true,
+      "confidence": 0.99,
+      "disclaimer": "मैं एक AI हूँ और पेशेवर चिकित्सा सलाह का विकल्प नहीं हूँ। कृपया तुरंत आपातकालीन सेवाओं या संकट हेल्पलाइन से संपर्क करें।",
+      "tool_call_name": "lookupEmergencyContacts",
+      "tool_result": {
+        "toolName": "lookupEmergencyContacts",
+        "parameters": {
+          "message": "I want to end my life",
+          "location": {
+            "address": "Current Device Location"
+          }
+        },
+        "output": {
+          "region": "Pakistan / Global",
+          "primaryEmergencyNumber": "1122",
+          "internationalEmergencyNumber": "112",
+          "hotlines": [
+            {
+              "service": "Pakistan Rescue Emergency Ambulance Dispatch",
+              "number": "1122"
+            },
+            {
+              "service": "Edhi Foundation Emergency Ambulance Service",
+              "number": "115"
+            },
+            {
+              "service": "Chhipa Ambulance Service",
+              "number": "1020"
+            },
+            {
+              "service": "PIMS Islamabad Emergency ER Counter",
+              "number": "+92 51 9261170"
+            },
+            {
+              "service": "US Emergency Dispatch",
+              "number": "911"
+            }
+          ]
+        },
+        "status": "executed"
+      },
+      "rag_sources": [
+        {
+          "id": "chunk-1",
+          "title": "CDC Emergency Department Triage Protocols & Red-Flag Criteria",
+          "source": "cdc_emergency_triage.md",
+          "score": 0,
+          "content": "# CDC Emergency Department Triage Protocols & Red-Flag Criteria"
+        },
+        {
+          "id": "chunk-2",
+          "title": "1. Acute Myocardial Infarction & Coronary Distress",
+          "source": "cdc_emergency_triage.md",
+          "score": 0,
+          "content": "- **Primary Symptoms**: Retrosternal chest pain or substernal crushing pressure lasting >10 minutes, pain radiating to left shoulder, arm, neck, or jaw.\n- **Associated Markers**: Diaphoresis, dyspnea, nausea, syncope.\n- **Action**: Immediate EMS dispatch (911/112). Patient should remain seated. Administer non-enteric aspirin (160-325 mg chewed) if no contraindications exist. Prepare for immediate ACLS cardiac catheterization."
+        },
+        {
+          "id": "chunk-3",
+          "title": "2. Stroke & Acute Neurological Deficits (FAST Protocol)",
+          "source": "cdc_emergency_triage.md",
+          "score": 0,
+          "content": "- **F - Facial Droop**: Asymmetry when smiling.\n- **A - Arm Drift**: One arm drifts downward when raised.\n- **S - Speech Difficulty**: Slurred, garbled, or absent speech.\n- **T - Time to Act**: Emergency transport within 3-4.5 hours tPA thrombolytic window.\n- **Red Flag**: Sudden severe \"thunderclap\" headache, hemiparesis, or unprovoked seizure requires emergency CT brain scan."
+        },
+        {
+          "id": "chunk-4",
+          "title": "Mayo Clinic Over-the-Counter Medication & Symptom Care Guide",
+          "source": "mayo_clinic_medicines.md",
+          "score": 0,
+          "content": "# Mayo Clinic Over-the-Counter Medication & Symptom Care Guide"
+        },
+        {
+          "id": "chunk-5",
+          "title": "1. Antipyretics & Analgesics",
+          "source": "mayo_clinic_medicines.md",
+          "score": 0,
+          "content": "- **Acetaminophen (Paracetamol)**: Dosage 500-1000 mg every 4-6 hours as needed (maximum 4000 mg/24 hours for adults). Do not combine with alcohol or hepatotoxic agents.\n- **Ibuprofen (NSAID)**: Dosage 200-400 mg every 4-6 hours with food. Contraindicated in active peptic ulcer disease, severe renal failure, or third-trimester pregnancy."
+        }
+      ],
+      "model_used": "gemma4:latest",
+      "timestamp": "2026-07-29T19:42:47.560Z",
+      "crisisResources": [
+        {
+          "name": "988 Suicide & Crisis Lifeline",
+          "number": "988",
+          "description": "Free, confidential 24/7 support for people in distress.",
+          "region": "United States",
+          "available": "24/7"
+        },
+        {
+          "name": "Umang Helpline Pakistan",
+          "number": "0311-7786264",
+          "description": "Mental health support and crisis counseling.",
+          "region": "Pakistan",
+          "available": "9 AM – 9 PM PKT"
+        },
+        {
+          "name": "Vandrevala Foundation",
+          "number": "1860-2662-345",
+          "description": "Multilingual mental health helpline.",
+          "region": "India",
+          "available": "24/7"
+        },
+        {
+          "name": "iCall Psychosocial Helpline",
+          "number": "9152987821",
+          "description": "Professional counseling and mental health support.",
+          "region": "India",
+          "available": "Mon–Sat 8AM–10PM"
+        },
+        {
+          "name": "Crisis Text Line",
+          "number": "Text HOME to 741741",
+          "description": "Free crisis counseling via text message.",
+          "region": "United States",
+          "available": "24/7"
+        },
+        {
+          "name": "Samaritans",
+          "number": "116 123",
+          "description": "Emotional support for anyone in distress.",
+          "region": "United Kingdom",
+          "available": "24/7"
+        }
+      ],
+      "crisisType": "suicidal",
+      "id": "session-1785354167753-l5dozr"
+    }
+  },
+  {
+    "id": "session-1785353485833-x9hh86",
+    "timestamp": "2026-07-29T19:31:25.833Z",
+    "userQuery": "I have headache and fever for 2 days",
+    "result": {
+      "language": "English",
+      "symptoms": [
+        "headache",
+        "fever"
+      ],
+      "duration": "2 days",
+      "severity": "Moderate",
+      "urgency": "Moderate",
+      "possible_causes": [
+        "common cold",
+        "flu",
+        "tension headache",
+        "sinus infection"
+      ],
+      "next_steps": [
+        "rest and hydration",
+        "over-the-counter pain relievers (e.g., acetaminophen)",
+        "monitor temperature and symptoms"
+      ],
+      "warning_signs": [
+        "severe headache that doesn't improve",
+        "stiff neck",
+        "difficulty breathing",
+        "confusion"
+      ],
+      "emergency": false,
+      "confidence": 0.95,
+      "disclaimer": "मैं एक डॉक्टर नहीं हूँ। यह जानकारी केवल प्राथमिक ट्राइएज सहायता के लिए है और पेशेवर चिकित्सा सलाह का विकल्प नहीं है। यदि आपके लक्षण बिगड़ते हैं या आपको गंभीर चिंता होती है, तो तुरंत डॉक्टर से मिलें।",
+      "tool_call_name": "none",
+      "rag_sources": [
+        {
+          "id": "chunk-11",
+          "title": "1. Acute Upper Respiratory Infections & Seasonal Influenza",
+          "source": "who_guidelines.md",
+          "score": 10,
+          "content": "Acute respiratory tract infections are classified based on anatomical location and severity of symptoms:\n- **Mild URI**: Mild fever (<38.5°C), rhinorrhea, sore throat, cough without dyspnea. Recommended management includes oral fluid rehydration, rest, and temperature monitoring.\n- **Severe Acute Respiratory Infection (SARI)**: Fever >=38.5°C accompanied by shortness of breath, tachypnea (respiratory rate >30 breaths/min in adults), or arterial oxygen saturation (SpO2) <92%. Immediate triage to emergency facility required."
+        },
+        {
+          "id": "chunk-6",
+          "title": "2. Antihistamines & Oral Decongestants",
+          "source": "mayo_clinic_medicines.md",
+          "score": 7.5,
+          "content": "- **Cetirizine / Loratadine**: Second-generation non-drowsy antihistamines for allergic rhinitis and urticaria.\n- **Saline Nasal Irrigation**: Warm 0.9% sodium chloride saline rinses for acute sinonasal congestion."
+        },
+        {
+          "id": "chunk-12",
+          "title": "2. Pediatric Febrile Illness Protocol",
+          "source": "who_guidelines.md",
+          "score": 7.5,
+          "content": "- **Infants <3 Months**: Any fever >=38.0°C (100.4°F) is a medical emergency requiring urgent septic workup and lumbar puncture evaluation.\n- **Children 3-36 Months**: Fever >=39.0°C (102.2°F) with lethargy, poor capillary refill (>2 seconds), stiff neck, or petechial rash signals bacterial meningitis or sepsis. Immediate pediatric ER transfer mandatory."
+        },
+        {
+          "id": "chunk-2",
+          "title": "1. Acute Myocardial Infarction & Coronary Distress",
+          "source": "cdc_emergency_triage.md",
+          "score": 2.5,
+          "content": "- **Primary Symptoms**: Retrosternal chest pain or substernal crushing pressure lasting >10 minutes, pain radiating to left shoulder, arm, neck, or jaw.\n- **Associated Markers**: Diaphoresis, dyspnea, nausea, syncope.\n- **Action**: Immediate EMS dispatch (911/112). Patient should remain seated. Administer non-enteric aspirin (160-325 mg chewed) if no contraindications exist. Prepare for immediate ACLS cardiac catheterization."
+        },
+        {
+          "id": "chunk-3",
+          "title": "2. Stroke & Acute Neurological Deficits (FAST Protocol)",
+          "source": "cdc_emergency_triage.md",
+          "score": 2.5,
+          "content": "- **F - Facial Droop**: Asymmetry when smiling.\n- **A - Arm Drift**: One arm drifts downward when raised.\n- **S - Speech Difficulty**: Slurred, garbled, or absent speech.\n- **T - Time to Act**: Emergency transport within 3-4.5 hours tPA thrombolytic window.\n- **Red Flag**: Sudden severe \"thunderclap\" headache, hemiparesis, or unprovoked seizure requires emergency CT brain scan."
+        }
+      ],
+      "model_used": "gemma4:latest",
+      "timestamp": "2026-07-29T19:31:25.825Z",
+      "id": "session-1785353485833-x9hh86"
+    }
+  },
+  {
+    "id": "session-1785353270535-k07q2w",
+    "timestamp": "2026-07-29T19:27:50.536Z",
+    "userQuery": "I have fever and headache for two days",
+    "result": {
+      "language": "English",
+      "symptoms": [
+        "fever",
+        "headache"
+      ],
+      "duration": "two days",
+      "severity": "Mild",
+      "urgency": "Moderate",
+      "possible_causes": [
+        "viral infection",
+        "tension headache",
+        "common cold"
+      ],
+      "next_steps": [
+        "rest and hydration",
+        "over-the-counter pain relievers (e.g., acetaminophen or ibuprofen) as directed"
+      ],
+      "warning_signs": [
+        "high fever that doesn't respond to medication",
+        "stiff neck accompanied by severe headache",
+        "confusion or difficulty waking up"
+      ],
+      "emergency": false,
+      "confidence": 0.95,
+      "disclaimer": "मैं एक डॉक्टर नहीं हूँ। यह जानकारी केवल प्राथमिक ट्राइएज सहायता के लिए है और पेशेवर चिकित्सा सलाह का विकल्प नहीं है। यदि आपके लक्षण बिगड़ते हैं या आपको गंभीर चिंता होती है तो तुरंत डॉक्टर से मिलें।",
+      "tool_call_name": "none",
+      "rag_sources": [
+        {
+          "id": "chunk-11",
+          "title": "1. Acute Upper Respiratory Infections & Seasonal Influenza",
+          "source": "who_guidelines.md",
+          "score": 10,
+          "content": "Acute respiratory tract infections are classified based on anatomical location and severity of symptoms:\n- **Mild URI**: Mild fever (<38.5°C), rhinorrhea, sore throat, cough without dyspnea. Recommended management includes oral fluid rehydration, rest, and temperature monitoring.\n- **Severe Acute Respiratory Infection (SARI)**: Fever >=38.5°C accompanied by shortness of breath, tachypnea (respiratory rate >30 breaths/min in adults), or arterial oxygen saturation (SpO2) <92%. Immediate triage to emergency facility required."
+        },
+        {
+          "id": "chunk-6",
+          "title": "2. Antihistamines & Oral Decongestants",
+          "source": "mayo_clinic_medicines.md",
+          "score": 7.5,
+          "content": "- **Cetirizine / Loratadine**: Second-generation non-drowsy antihistamines for allergic rhinitis and urticaria.\n- **Saline Nasal Irrigation**: Warm 0.9% sodium chloride saline rinses for acute sinonasal congestion."
+        },
+        {
+          "id": "chunk-12",
+          "title": "2. Pediatric Febrile Illness Protocol",
+          "source": "who_guidelines.md",
+          "score": 7.5,
+          "content": "- **Infants <3 Months**: Any fever >=38.0°C (100.4°F) is a medical emergency requiring urgent septic workup and lumbar puncture evaluation.\n- **Children 3-36 Months**: Fever >=39.0°C (102.2°F) with lethargy, poor capillary refill (>2 seconds), stiff neck, or petechial rash signals bacterial meningitis or sepsis. Immediate pediatric ER transfer mandatory."
+        },
+        {
+          "id": "chunk-2",
+          "title": "1. Acute Myocardial Infarction & Coronary Distress",
+          "source": "cdc_emergency_triage.md",
+          "score": 2.5,
+          "content": "- **Primary Symptoms**: Retrosternal chest pain or substernal crushing pressure lasting >10 minutes, pain radiating to left shoulder, arm, neck, or jaw.\n- **Associated Markers**: Diaphoresis, dyspnea, nausea, syncope.\n- **Action**: Immediate EMS dispatch (911/112). Patient should remain seated. Administer non-enteric aspirin (160-325 mg chewed) if no contraindications exist. Prepare for immediate ACLS cardiac catheterization."
+        },
+        {
+          "id": "chunk-3",
+          "title": "2. Stroke & Acute Neurological Deficits (FAST Protocol)",
+          "source": "cdc_emergency_triage.md",
+          "score": 2.5,
+          "content": "- **F - Facial Droop**: Asymmetry when smiling.\n- **A - Arm Drift**: One arm drifts downward when raised.\n- **S - Speech Difficulty**: Slurred, garbled, or absent speech.\n- **T - Time to Act**: Emergency transport within 3-4.5 hours tPA thrombolytic window.\n- **Red Flag**: Sudden severe \"thunderclap\" headache, hemiparesis, or unprovoked seizure requires emergency CT brain scan."
+        }
+      ],
+      "model_used": "gemma4:latest",
+      "timestamp": "2026-07-29T19:27:50.521Z",
+      "id": "session-1785353270535-k07q2w"
+    }
+  },
+  {
+    "id": "session-1785352609221-cytiej",
+    "timestamp": "2026-07-29T19:16:49.221Z",
+    "userQuery": "I have fever and headache for two days.",
+    "result": {
+      "language": "English",
+      "symptoms": [
+        "fever",
+        "headache"
+      ],
+      "duration": "two days",
+      "severity": "Mild",
+      "urgency": "Moderate",
+      "possible_causes": [
+        "viral infection",
+        "tension headache",
+        "common cold"
+      ],
+      "next_steps": [
+        "rest and hydration",
+        "over-the-counter pain relievers (e.g., acetaminophen/ibuprofen) as directed"
+      ],
+      "warning_signs": [
+        "high fever that doesn't respond to medication",
+        "stiff neck or rash",
+        "difficulty breathing"
+      ],
+      "emergency": false,
+      "confidence": 0.95,
+      "disclaimer": "मैं एक डॉक्टर नहीं हूँ। यह जानकारी केवल प्राथमिक ट्राइएज सहायता के लिए है और पेशेवर चिकित्सा सलाह का विकल्प नहीं है। यदि लक्षण बिगड़ते हैं या आपको गंभीर चिंता होती है तो तुरंत डॉक्टर से मिलें।",
+      "tool_call_name": "none",
+      "rag_sources": [
+        {
+          "id": "chunk-11",
+          "title": "1. Acute Upper Respiratory Infections & Seasonal Influenza",
+          "source": "who_guidelines.md",
+          "score": 10,
+          "content": "Acute respiratory tract infections are classified based on anatomical location and severity of symptoms:\n- **Mild URI**: Mild fever (<38.5°C), rhinorrhea, sore throat, cough without dyspnea. Recommended management includes oral fluid rehydration, rest, and temperature monitoring.\n- **Severe Acute Respiratory Infection (SARI)**: Fever >=38.5°C accompanied by shortness of breath, tachypnea (respiratory rate >30 breaths/min in adults), or arterial oxygen saturation (SpO2) <92%. Immediate triage to emergency facility required."
+        },
+        {
+          "id": "chunk-6",
+          "title": "2. Antihistamines & Oral Decongestants",
+          "source": "mayo_clinic_medicines.md",
+          "score": 7.5,
+          "content": "- **Cetirizine / Loratadine**: Second-generation non-drowsy antihistamines for allergic rhinitis and urticaria.\n- **Saline Nasal Irrigation**: Warm 0.9% sodium chloride saline rinses for acute sinonasal congestion."
+        },
+        {
+          "id": "chunk-12",
+          "title": "2. Pediatric Febrile Illness Protocol",
+          "source": "who_guidelines.md",
+          "score": 7.5,
+          "content": "- **Infants <3 Months**: Any fever >=38.0°C (100.4°F) is a medical emergency requiring urgent septic workup and lumbar puncture evaluation.\n- **Children 3-36 Months**: Fever >=39.0°C (102.2°F) with lethargy, poor capillary refill (>2 seconds), stiff neck, or petechial rash signals bacterial meningitis or sepsis. Immediate pediatric ER transfer mandatory."
+        },
+        {
+          "id": "chunk-2",
+          "title": "1. Acute Myocardial Infarction & Coronary Distress",
+          "source": "cdc_emergency_triage.md",
+          "score": 2.5,
+          "content": "- **Primary Symptoms**: Retrosternal chest pain or substernal crushing pressure lasting >10 minutes, pain radiating to left shoulder, arm, neck, or jaw.\n- **Associated Markers**: Diaphoresis, dyspnea, nausea, syncope.\n- **Action**: Immediate EMS dispatch (911/112). Patient should remain seated. Administer non-enteric aspirin (160-325 mg chewed) if no contraindications exist. Prepare for immediate ACLS cardiac catheterization."
+        },
+        {
+          "id": "chunk-3",
+          "title": "2. Stroke & Acute Neurological Deficits (FAST Protocol)",
+          "source": "cdc_emergency_triage.md",
+          "score": 2.5,
+          "content": "- **F - Facial Droop**: Asymmetry when smiling.\n- **A - Arm Drift**: One arm drifts downward when raised.\n- **S - Speech Difficulty**: Slurred, garbled, or absent speech.\n- **T - Time to Act**: Emergency transport within 3-4.5 hours tPA thrombolytic window.\n- **Red Flag**: Sudden severe \"thunderclap\" headache, hemiparesis, or unprovoked seizure requires emergency CT brain scan."
+        }
+      ],
+      "model_used": "gemma4:latest",
+      "timestamp": "2026-07-29T19:16:49.216Z",
+      "id": "session-1785352609221-cytiej"
+    }
+  },
+  {
+    "id": "session-1785352443507-757z1v",
+    "timestamp": "2026-07-29T19:14:03.507Z",
+    "userQuery": "i am little bit horny",
+    "result": {
+      "language": "English",
+      "symptoms": [
+        "little bit horny"
+      ],
+      "duration": "N/A",
+      "severity": "Mild",
+      "urgency": "Low",
+      "possible_causes": [
+        "Normal physiological arousal",
+        "Emotional stimulation"
+      ],
+      "next_steps": [
+        "Engage in healthy coping mechanisms like exercise or hobbies.",
+        "If this is causing distress, consider speaking with a healthcare provider."
+      ],
+      "warning_signs": [
+        "Pain or discomfort associated with the feeling (if applicable)",
+        "Signs of compulsive behavior that interfere with daily life"
+      ],
+      "emergency": false,
+      "confidence": 0.95,
+      "disclaimer": "I am an AI assistant and not a medical doctor. This information is for informational purposes only and should not replace professional medical advice.",
+      "tool_call_name": "none",
+      "rag_sources": [
+        {
+          "id": "chunk-1",
+          "title": "CDC Emergency Department Triage Protocols & Red-Flag Criteria",
+          "source": "cdc_emergency_triage.md",
+          "score": 0,
+          "content": "# CDC Emergency Department Triage Protocols & Red-Flag Criteria"
+        },
+        {
+          "id": "chunk-2",
+          "title": "1. Acute Myocardial Infarction & Coronary Distress",
+          "source": "cdc_emergency_triage.md",
+          "score": 0,
+          "content": "- **Primary Symptoms**: Retrosternal chest pain or substernal crushing pressure lasting >10 minutes, pain radiating to left shoulder, arm, neck, or jaw.\n- **Associated Markers**: Diaphoresis, dyspnea, nausea, syncope.\n- **Action**: Immediate EMS dispatch (911/112). Patient should remain seated. Administer non-enteric aspirin (160-325 mg chewed) if no contraindications exist. Prepare for immediate ACLS cardiac catheterization."
+        },
+        {
+          "id": "chunk-3",
+          "title": "2. Stroke & Acute Neurological Deficits (FAST Protocol)",
+          "source": "cdc_emergency_triage.md",
+          "score": 0,
+          "content": "- **F - Facial Droop**: Asymmetry when smiling.\n- **A - Arm Drift**: One arm drifts downward when raised.\n- **S - Speech Difficulty**: Slurred, garbled, or absent speech.\n- **T - Time to Act**: Emergency transport within 3-4.5 hours tPA thrombolytic window.\n- **Red Flag**: Sudden severe \"thunderclap\" headache, hemiparesis, or unprovoked seizure requires emergency CT brain scan."
+        },
+        {
+          "id": "chunk-4",
+          "title": "Mayo Clinic Over-the-Counter Medication & Symptom Care Guide",
+          "source": "mayo_clinic_medicines.md",
+          "score": 0,
+          "content": "# Mayo Clinic Over-the-Counter Medication & Symptom Care Guide"
+        },
+        {
+          "id": "chunk-5",
+          "title": "1. Antipyretics & Analgesics",
+          "source": "mayo_clinic_medicines.md",
+          "score": 0,
+          "content": "- **Acetaminophen (Paracetamol)**: Dosage 500-1000 mg every 4-6 hours as needed (maximum 4000 mg/24 hours for adults). Do not combine with alcohol or hepatotoxic agents.\n- **Ibuprofen (NSAID)**: Dosage 200-400 mg every 4-6 hours with food. Contraindicated in active peptic ulcer disease, severe renal failure, or third-trimester pregnancy."
+        }
+      ],
+      "model_used": "gemma4:latest",
+      "timestamp": "2026-07-29T19:14:03.505Z",
+      "id": "session-1785352443507-757z1v"
+    }
+  },
+  {
+    "id": "session-1785352417651-g6t715",
+    "timestamp": "2026-07-29T19:13:37.651Z",
+    "userQuery": "i am hungry and feeling scared",
+    "result": {
+      "language": "English",
+      "symptoms": [
+        "hungry",
+        "feeling scared"
+      ],
+      "duration": "N/A",
+      "severity": "Mild",
+      "urgency": "Low",
+      "possible_causes": [
+        "Hypoglycemia (low blood sugar)",
+        "Anxiety or emotional distress"
+      ],
+      "next_steps": [
+        "Eat a small, balanced snack containing carbohydrates and protein.",
+        "Try deep breathing exercises or grounding techniques to manage anxiety."
+      ],
+      "warning_signs": [
+        "Dizziness or fainting (if blood sugar drops significantly)",
+        "Rapid heart rate or panic attacks"
+      ],
+      "emergency": false,
+      "confidence": 0.95,
+      "disclaimer": "मैं एक डॉक्टर नहीं हूँ। यह जानकारी केवल प्राथमिक मार्गदर्शन के लिए है और पेशेवर चिकित्सा सलाह का विकल्प नहीं है। यदि लक्षण बिगड़ते हैं तो तुरंत डॉक्टर से मिलें।",
+      "tool_call_name": "none",
+      "rag_sources": [
+        {
+          "id": "chunk-11",
+          "title": "1. Acute Upper Respiratory Infections & Seasonal Influenza",
+          "source": "who_guidelines.md",
+          "score": 5,
+          "content": "Acute respiratory tract infections are classified based on anatomical location and severity of symptoms:\n- **Mild URI**: Mild fever (<38.5°C), rhinorrhea, sore throat, cough without dyspnea. Recommended management includes oral fluid rehydration, rest, and temperature monitoring.\n- **Severe Acute Respiratory Infection (SARI)**: Fever >=38.5°C accompanied by shortness of breath, tachypnea (respiratory rate >30 breaths/min in adults), or arterial oxygen saturation (SpO2) <92%. Immediate triage to emergency facility required."
+        },
+        {
+          "id": "chunk-6",
+          "title": "2. Antihistamines & Oral Decongestants",
+          "source": "mayo_clinic_medicines.md",
+          "score": 2.5,
+          "content": "- **Cetirizine / Loratadine**: Second-generation non-drowsy antihistamines for allergic rhinitis and urticaria.\n- **Saline Nasal Irrigation**: Warm 0.9% sodium chloride saline rinses for acute sinonasal congestion."
+        },
+        {
+          "id": "chunk-8",
+          "title": "1. Severe Hemorrhage & Bleeding Control",
+          "source": "nhs_first_aid.md",
+          "score": 2.5,
+          "content": "- **Direct Pressure**: Apply direct, uninterrupted firm pressure directly over the wound using sterile gauze or clean cloth.\n- **Tourniquet**: If direct pressure fails to stop arterial spurting blood on limbs, apply a commercial tourniquet 2-3 inches proximal to the wound (avoiding joints).\n- **Elevation**: Maintain pressure and keep the bleeding limb elevated above heart level if no fractures are suspected."
+        },
+        {
+          "id": "chunk-12",
+          "title": "2. Pediatric Febrile Illness Protocol",
+          "source": "who_guidelines.md",
+          "score": 2.5,
+          "content": "- **Infants <3 Months**: Any fever >=38.0°C (100.4°F) is a medical emergency requiring urgent septic workup and lumbar puncture evaluation.\n- **Children 3-36 Months**: Fever >=39.0°C (102.2°F) with lethargy, poor capillary refill (>2 seconds), stiff neck, or petechial rash signals bacterial meningitis or sepsis. Immediate pediatric ER transfer mandatory."
+        }
+      ],
+      "model_used": "gemma4:latest",
+      "timestamp": "2026-07-29T19:13:37.649Z",
+      "id": "session-1785352417651-g6t715"
+    }
+  },
+  {
+    "id": "session-1785352311960-lytwey",
+    "timestamp": "2026-07-29T19:11:51.960Z",
+    "userQuery": "مجھے دو دنوں سے بخار اور سر میں شدید درد ہے",
+    "result": {
+      "language": "Hindi",
+      "symptoms": [
+        "بخار",
+        "سر میں شدید درد"
+      ],
+      "duration": "دو دنوں سے",
+      "severity": "Moderate",
+      "urgency": "Moderate",
+      "possible_causes": [
+        "वायरल इन्फेक्शन",
+        "टेंशन/तनाव",
+        "अन्य सामान्य बीमारी"
+      ],
+      "next_steps": [
+        "घर पर आराम करें और पर्याप्त तरल पदार्थ लें।",
+        "डॉक्टर से सलाह लें ताकि सही कारण का पता चल सके।"
+      ],
+      "warning_signs": [
+        "सांस लेने में तकलीफ",
+        "तेज बुखार जो कम न हो",
+        "शरीर के अन्य हिस्सों में चकत्ते"
+      ],
+      "emergency": false,
+      "confidence": 0.92,
+      "disclaimer": "यह केवल प्राथमिक चिकित्सा सलाह है और डॉक्टर की जगह नहीं ले सकती। कृपया जल्द से जल्द डॉक्टर से मिलें।",
+      "tool_call_name": "none",
+      "rag_sources": [],
+      "model_used": "gemma4:latest",
+      "timestamp": "2026-07-29T19:11:51.960Z",
+      "id": "session-1785352311960-lytwey"
+    }
+  },
+  {
+    "id": "session-1785352296291-wm6tio",
+    "timestamp": "2026-07-29T19:11:36.291Z",
+    "userQuery": "مجھے دو دنوں سے بخار اور سر میں شدید درد ہے",
+    "result": {
+      "language": "Hindi",
+      "symptoms": [
+        "बुखार",
+        "सिर में तीव्र दर्द"
+      ],
+      "duration": "दो दिनों से",
+      "severity": "Moderate",
+      "urgency": "Moderate",
+      "possible_causes": [
+        "सामान्य वायरल संक्रमण",
+        "टॉन्सिलिटिस",
+        "माइग्रेन"
+      ],
+      "next_steps": [
+        "घर पर आराम करें और पर्याप्त तरल पदार्थ लें।",
+        "डॉक्टर से सलाह लेने के लिए अपॉइंटमेंट बुक करें।"
+      ],
+      "warning_signs": [
+        "तेज सांस लेना",
+        "गर्दन में अकड़न",
+        "दवाओं का असर न होना"
+      ],
+      "emergency": false,
+      "confidence": 0.92,
+      "disclaimer": "यह जानकारी केवल प्राथमिक मार्गदर्शन है और पेशेवर चिकित्सा सलाह का विकल्प नहीं है। कृपया डॉक्टर से मिलें।",
+      "tool_call_name": "none",
+      "rag_sources": [],
+      "model_used": "gemma4:latest",
+      "timestamp": "2026-07-29T19:11:36.290Z",
+      "id": "session-1785352296291-wm6tio"
+    }
+  },
+  {
+    "id": "session-1785352287480-ujblrd",
+    "timestamp": "2026-07-29T19:11:27.480Z",
+    "userQuery": "मुझे 2 दिन से तेज बुखार और सिरदर्द है",
+    "result": {
+      "language": "Hindi",
+      "symptoms": [
+        "तेज बुखार",
+        "सिरदर्द"
+      ],
+      "duration": "2 दिन से",
+      "severity": "Moderate",
+      "urgency": "Moderate",
+      "possible_causes": [
+        "वायरल संक्रमण",
+        "सामान्य फ्लू",
+        "अन्य संक्रमण"
+      ],
+      "next_steps": [
+        "घर पर आराम करें और पर्याप्त तरल पदार्थ लें।",
+        "बुखार कम करने के लिए डॉक्टर की सलाह पर दवा लें।",
+        "यदि लक्षण बिगड़ते हैं तो तुरंत डॉक्टर से मिलें।"
+      ],
+      "warning_signs": [
+        "सांस लेने में तकलीफ",
+        "गर्दन में अकड़न",
+        "भ्रम या बेहोशी महसूस होना"
+      ],
+      "emergency": false,
+      "confidence": 0.95,
+      "disclaimer": "यह केवल एक प्रारंभिक मूल्यांकन है और पेशेवर चिकित्सा सलाह का विकल्प नहीं है। कृपया सटीक निदान और उपचार के लिए डॉक्टर से मिलें।",
+      "tool_call_name": "none",
+      "rag_sources": [],
+      "model_used": "gemma4:latest",
+      "timestamp": "2026-07-29T19:11:27.479Z",
+      "id": "session-1785352287480-ujblrd"
+    }
+  },
+  {
+    "id": "session-1785352193621-93zt0r",
+    "timestamp": "2026-07-29T19:09:53.621Z",
+    "userQuery": "I have severe crushing chest pain and difficulty breathing.",
+    "result": {
+      "language": "English",
+      "symptoms": [
+        "severe crushing chest pain",
+        "difficulty breathing"
+      ],
+      "duration": "unknown",
+      "severity": "Critical",
+      "urgency": "Emergency",
+      "possible_causes": [
+        "Acute Myocardial Infarction (Heart Attack)",
+        "Pericarditis",
+        "Pulmonary Embolism"
+      ],
+      "next_steps": [
+        "Call emergency services immediately (911/112).",
+        "Remain seated and try to stay calm.",
+        "Do not drive yourself; wait for professional medical help."
+      ],
+      "warning_signs": [
+        "Pain radiating to the jaw, neck, or left arm.",
+        "Dizziness or fainting (syncope)."
+      ],
+      "emergency": true,
+      "confidence": 0.99,
+      "disclaimer": "This is AI triage only and is not a substitute for professional medical advice. Always seek immediate attention from qualified healthcare providers.",
+      "tool_call_name": "lookupEmergencyContacts",
+      "tool_result": {
+        "toolName": "lookupEmergencyContacts",
+        "parameters": {
+          "message": "I have severe crushing chest pain and difficulty breathing.",
+          "location": {
+            "address": "Current Device Location"
+          }
+        },
+        "output": {
+          "region": "US / Global",
+          "primaryEmergencyNumber": "911",
+          "internationalEmergencyNumber": "112",
+          "hotlines": [
+            {
+              "service": "Medical Emergency Ambulance Dispatch",
+              "number": "911 / 112"
+            },
+            {
+              "service": "National Poison Control Center",
+              "number": "1-800-222-1222"
+            },
+            {
+              "service": "988 Suicide & Crisis Lifeline",
+              "number": "988"
+            },
+            {
+              "service": "India Medical Ambulance Emergency",
+              "number": "102 / 108"
+            },
+            {
+              "service": "UK NHS Health Direct Hotline",
+              "number": "111"
+            }
+          ]
+        },
+        "status": "executed"
+      },
+      "rag_sources": [
+        {
+          "id": "chunk-2",
+          "title": "1. Acute Myocardial Infarction & Coronary Distress",
+          "source": "cdc_emergency_triage.md",
+          "score": 10,
+          "content": "- **Primary Symptoms**: Retrosternal chest pain or substernal crushing pressure lasting >10 minutes, pain radiating to left shoulder, arm, neck, or jaw.\n- **Associated Markers**: Diaphoresis, dyspnea, nausea, syncope.\n- **Action**: Immediate EMS dispatch (911/112). Patient should remain seated. Administer non-enteric aspirin (160-325 mg chewed) if no contraindications exist. Prepare for immediate ACLS cardiac catheterization."
+        },
+        {
+          "id": "chunk-11",
+          "title": "1. Acute Upper Respiratory Infections & Seasonal Influenza",
+          "source": "who_guidelines.md",
+          "score": 7.5,
+          "content": "Acute respiratory tract infections are classified based on anatomical location and severity of symptoms:\n- **Mild URI**: Mild fever (<38.5°C), rhinorrhea, sore throat, cough without dyspnea. Recommended management includes oral fluid rehydration, rest, and temperature monitoring.\n- **Severe Acute Respiratory Infection (SARI)**: Fever >=38.5°C accompanied by shortness of breath, tachypnea (respiratory rate >30 breaths/min in adults), or arterial oxygen saturation (SpO2) <92%. Immediate triage to emergency facility required."
+        },
+        {
+          "id": "chunk-3",
+          "title": "2. Stroke & Acute Neurological Deficits (FAST Protocol)",
+          "source": "cdc_emergency_triage.md",
+          "score": 5,
+          "content": "- **F - Facial Droop**: Asymmetry when smiling.\n- **A - Arm Drift**: One arm drifts downward when raised.\n- **S - Speech Difficulty**: Slurred, garbled, or absent speech.\n- **T - Time to Act**: Emergency transport within 3-4.5 hours tPA thrombolytic window.\n- **Red Flag**: Sudden severe \"thunderclap\" headache, hemiparesis, or unprovoked seizure requires emergency CT brain scan."
+        },
+        {
+          "id": "chunk-8",
+          "title": "1. Severe Hemorrhage & Bleeding Control",
+          "source": "nhs_first_aid.md",
+          "score": 5,
+          "content": "- **Direct Pressure**: Apply direct, uninterrupted firm pressure directly over the wound using sterile gauze or clean cloth.\n- **Tourniquet**: If direct pressure fails to stop arterial spurting blood on limbs, apply a commercial tourniquet 2-3 inches proximal to the wound (avoiding joints).\n- **Elevation**: Maintain pressure and keep the bleeding limb elevated above heart level if no fractures are suspected."
+        },
+        {
+          "id": "chunk-5",
+          "title": "1. Antipyretics & Analgesics",
+          "source": "mayo_clinic_medicines.md",
+          "score": 2.5,
+          "content": "- **Acetaminophen (Paracetamol)**: Dosage 500-1000 mg every 4-6 hours as needed (maximum 4000 mg/24 hours for adults). Do not combine with alcohol or hepatotoxic agents.\n- **Ibuprofen (NSAID)**: Dosage 200-400 mg every 4-6 hours with food. Contraindicated in active peptic ulcer disease, severe renal failure, or third-trimester pregnancy."
+        }
+      ],
+      "model_used": "gemma4:latest",
+      "timestamp": "2026-07-29T19:09:53.620Z",
+      "id": "session-1785352193621-93zt0r"
+    }
+  },
+  {
+    "id": "session-1785352171210-aloyqn",
+    "timestamp": "2026-07-29T19:09:31.210Z",
+    "userQuery": "i am hungry",
+    "result": {
+      "language": "English",
+      "symptoms": [
+        "भूख"
+      ],
+      "duration": "unknown",
+      "severity": "Mild",
+      "urgency": "Low",
+      "possible_causes": [
+        "पर्याप्त भोजन न करना",
+        "कैलोरी की कमी"
+      ],
+      "next_steps": [
+        "संतुलित आहार लें जिसमें प्रोटीन, कार्ब्स और स्वस्थ वसा शामिल हों।",
+        "पानी पीते रहें ताकि डिहाइड्रेशन न हो।",
+        "यदि भूख बहुत तीव्र है तो छोटे-छोटे अंतराल पर कुछ खाएं।"
+      ],
+      "warning_signs": [
+        "चक्कर आना (बहुत गंभीर)",
+        "मतली या उल्टी के साथ लगातार कमजोरी महसूस होना"
+      ],
+      "emergency": false,
+      "confidence": 0.95,
+      "disclaimer": "यह एक AI ट्राइएज मूल्यांकन है और वास्तविक चिकित्सा सलाह नहीं है। हमेशा डॉक्टर से परामर्श लें।",
+      "tool_call_name": "none",
+      "rag_sources": [
+        {
+          "id": "chunk-1",
+          "title": "CDC Emergency Department Triage Protocols & Red-Flag Criteria",
+          "source": "cdc_emergency_triage.md",
+          "score": 0,
+          "content": "# CDC Emergency Department Triage Protocols & Red-Flag Criteria"
+        },
+        {
+          "id": "chunk-2",
+          "title": "1. Acute Myocardial Infarction & Coronary Distress",
+          "source": "cdc_emergency_triage.md",
+          "score": 0,
+          "content": "- **Primary Symptoms**: Retrosternal chest pain or substernal crushing pressure lasting >10 minutes, pain radiating to left shoulder, arm, neck, or jaw.\n- **Associated Markers**: Diaphoresis, dyspnea, nausea, syncope.\n- **Action**: Immediate EMS dispatch (911/112). Patient should remain seated. Administer non-enteric aspirin (160-325 mg chewed) if no contraindications exist. Prepare for immediate ACLS cardiac catheterization."
+        },
+        {
+          "id": "chunk-3",
+          "title": "2. Stroke & Acute Neurological Deficits (FAST Protocol)",
+          "source": "cdc_emergency_triage.md",
+          "score": 0,
+          "content": "- **F - Facial Droop**: Asymmetry when smiling.\n- **A - Arm Drift**: One arm drifts downward when raised.\n- **S - Speech Difficulty**: Slurred, garbled, or absent speech.\n- **T - Time to Act**: Emergency transport within 3-4.5 hours tPA thrombolytic window.\n- **Red Flag**: Sudden severe \"thunderclap\" headache, hemiparesis, or unprovoked seizure requires emergency CT brain scan."
+        },
+        {
+          "id": "chunk-4",
+          "title": "Mayo Clinic Over-the-Counter Medication & Symptom Care Guide",
+          "source": "mayo_clinic_medicines.md",
+          "score": 0,
+          "content": "# Mayo Clinic Over-the-Counter Medication & Symptom Care Guide"
+        },
+        {
+          "id": "chunk-5",
+          "title": "1. Antipyretics & Analgesics",
+          "source": "mayo_clinic_medicines.md",
+          "score": 0,
+          "content": "- **Acetaminophen (Paracetamol)**: Dosage 500-1000 mg every 4-6 hours as needed (maximum 4000 mg/24 hours for adults). Do not combine with alcohol or hepatotoxic agents.\n- **Ibuprofen (NSAID)**: Dosage 200-400 mg every 4-6 hours with food. Contraindicated in active peptic ulcer disease, severe renal failure, or third-trimester pregnancy."
+        }
+      ],
+      "model_used": "gemma4:latest",
+      "timestamp": "2026-07-29T19:09:31.205Z",
+      "id": "session-1785352171210-aloyqn"
+    }
+  },
+  {
+    "id": "session-1785351624495-08mynx",
+    "timestamp": "2026-07-29T19:00:24.497Z",
+    "userQuery": "I have severe crushing chest pain and shortness of breath",
+    "result": {
+      "language": "English",
+      "symptoms": [
+        "severe crushing chest pain",
+        "shortness of breath"
+      ],
+      "duration": "unknown",
+      "severity": "Critical",
+      "urgency": "Emergency",
+      "possible_causes": [
+        "Acute Myocardial Infarction (Heart Attack)",
+        "Pericarditis",
+        "Pulmonary Embolism"
+      ],
+      "next_steps": [
+        "Call emergency services immediately (911/112).",
+        "Remain seated and try to stay calm.",
+        "Do not drive yourself; wait for professional medical help."
+      ],
+      "warning_signs": [
+        "Pain radiating to the jaw, neck, or left arm.",
+        "Dizziness or fainting.",
+        "Severe shortness of breath that worsens rapidly."
+      ],
+      "emergency": true,
+      "confidence": 0.99,
+      "disclaimer": "This is AI triage only and not medical advice. Seek immediate professional medical attention.",
+      "tool_call_name": "lookupEmergencyContacts",
+      "tool_result": {
+        "toolName": "lookupEmergencyContacts",
+        "parameters": {
+          "message": "I have severe crushing chest pain and shortness of breath",
+          "location": {
+            "address": "Current Device Location"
+          }
+        },
+        "output": {
+          "region": "US / Global",
+          "primaryEmergencyNumber": "911",
+          "internationalEmergencyNumber": "112",
+          "hotlines": [
+            {
+              "service": "Medical Emergency Ambulance Dispatch",
+              "number": "911 / 112"
+            },
+            {
+              "service": "National Poison Control Center",
+              "number": "1-800-222-1222"
+            },
+            {
+              "service": "988 Suicide & Crisis Lifeline",
+              "number": "988"
+            },
+            {
+              "service": "India Medical Ambulance Emergency",
+              "number": "102 / 108"
+            },
+            {
+              "service": "UK NHS Health Direct Hotline",
+              "number": "111"
+            }
+          ]
+        },
+        "status": "executed"
+      },
+      "rag_sources": [
+        {
+          "id": "chunk-11",
+          "title": "1. Acute Upper Respiratory Infections & Seasonal Influenza",
+          "source": "who_guidelines.md",
+          "score": 12.5,
+          "content": "Acute respiratory tract infections are classified based on anatomical location and severity of symptoms:\n- **Mild URI**: Mild fever (<38.5°C), rhinorrhea, sore throat, cough without dyspnea. Recommended management includes oral fluid rehydration, rest, and temperature monitoring.\n- **Severe Acute Respiratory Infection (SARI)**: Fever >=38.5°C accompanied by shortness of breath, tachypnea (respiratory rate >30 breaths/min in adults), or arterial oxygen saturation (SpO2) <92%. Immediate triage to emergency facility required."
+        },
+        {
+          "id": "chunk-2",
+          "title": "1. Acute Myocardial Infarction & Coronary Distress",
+          "source": "cdc_emergency_triage.md",
+          "score": 10,
+          "content": "- **Primary Symptoms**: Retrosternal chest pain or substernal crushing pressure lasting >10 minutes, pain radiating to left shoulder, arm, neck, or jaw.\n- **Associated Markers**: Diaphoresis, dyspnea, nausea, syncope.\n- **Action**: Immediate EMS dispatch (911/112). Patient should remain seated. Administer non-enteric aspirin (160-325 mg chewed) if no contraindications exist. Prepare for immediate ACLS cardiac catheterization."
+        },
+        {
+          "id": "chunk-8",
+          "title": "1. Severe Hemorrhage & Bleeding Control",
+          "source": "nhs_first_aid.md",
+          "score": 5,
+          "content": "- **Direct Pressure**: Apply direct, uninterrupted firm pressure directly over the wound using sterile gauze or clean cloth.\n- **Tourniquet**: If direct pressure fails to stop arterial spurting blood on limbs, apply a commercial tourniquet 2-3 inches proximal to the wound (avoiding joints).\n- **Elevation**: Maintain pressure and keep the bleeding limb elevated above heart level if no fractures are suspected."
+        },
+        {
+          "id": "chunk-3",
+          "title": "2. Stroke & Acute Neurological Deficits (FAST Protocol)",
+          "source": "cdc_emergency_triage.md",
+          "score": 2.5,
+          "content": "- **F - Facial Droop**: Asymmetry when smiling.\n- **A - Arm Drift**: One arm drifts downward when raised.\n- **S - Speech Difficulty**: Slurred, garbled, or absent speech.\n- **T - Time to Act**: Emergency transport within 3-4.5 hours tPA thrombolytic window.\n- **Red Flag**: Sudden severe \"thunderclap\" headache, hemiparesis, or unprovoked seizure requires emergency CT brain scan."
+        },
+        {
+          "id": "chunk-5",
+          "title": "1. Antipyretics & Analgesics",
+          "source": "mayo_clinic_medicines.md",
+          "score": 2.5,
+          "content": "- **Acetaminophen (Paracetamol)**: Dosage 500-1000 mg every 4-6 hours as needed (maximum 4000 mg/24 hours for adults). Do not combine with alcohol or hepatotoxic agents.\n- **Ibuprofen (NSAID)**: Dosage 200-400 mg every 4-6 hours with food. Contraindicated in active peptic ulcer disease, severe renal failure, or third-trimester pregnancy."
+        }
+      ],
+      "model_used": "gemma4:latest",
+      "timestamp": "2026-07-29T19:00:24.440Z",
+      "id": "session-1785351624495-08mynx"
+    }
+  }
+]

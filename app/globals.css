@@ -1,0 +1,223 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+/* ═══════════════════════════════════════════════════════
+   DESIGN SYSTEM TOKENS
+   8-point grid · Restrained palette · Inter Variable
+   ═══════════════════════════════════════════════════════ */
+
+:root {
+  /* Colors — Restrained, muted, expensive */
+  --bg:           #FAFBFC;
+  --surface:      #FFFFFF;
+  --surface-alt:  #F6F7F9;
+  --border:       #E8EAED;
+  --border-light: #F0F1F3;
+
+  --text-primary:   #0F172A;
+  --text-secondary: #475569;
+  --text-tertiary:  #94A3B8;
+  --text-inverse:   #FFFFFF;
+
+  --accent:         #059669;
+  --accent-hover:   #047857;
+  --accent-light:   #ECFDF5;
+  --accent-muted:   #D1FAE5;
+  --accent-subtle:  #F0FDF9;
+
+  --emergency:       #DC2626;
+  --emergency-light: #FEF2F2;
+  --emergency-muted: #FECACA;
+
+  --warning:       #D97706;
+  --warning-light: #FFFBEB;
+
+  --success:       #16A34A;
+  --success-light: #F0FDF4;
+
+  /* Typography Scale */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  --text-display: 600 28px/36px var(--font-sans);
+  --text-heading: 600 18px/26px var(--font-sans);
+  --text-body:    400 15px/24px var(--font-sans);
+  --text-body-medium: 500 15px/24px var(--font-sans);
+  --text-small:   400 13px/20px var(--font-sans);
+  --text-small-medium: 500 13px/20px var(--font-sans);
+  --text-caption: 500 11px/16px var(--font-sans);
+
+  --tracking-tight: -0.02em;
+  --tracking-normal: -0.006em;
+
+  /* Spacing — 8pt grid */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-7:  28px;
+  --space-8:  32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+
+  /* Radius */
+  --radius-sm:   6px;
+  --radius-md:   10px;
+  --radius-lg:   14px;
+  --radius-xl:   20px;
+  --radius-full: 9999px;
+
+  /* Shadows — Subtle, layered */
+  --shadow-xs:  0 1px 2px rgba(0,0,0,0.04);
+  --shadow-sm:  0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md:  0 4px 12px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.04);
+  --shadow-lg:  0 8px 24px rgba(0,0,0,0.08), 0 2px 6px rgba(0,0,0,0.04);
+  --shadow-focus: 0 0 0 3px rgba(5, 150, 105, 0.15);
+
+  /* Transitions */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --duration-slow: 400ms;
+
+  /* Layout */
+  --content-width: 720px;
+  --page-width: 1080px;
+}
+
+/* ═══════════════════════════════════════════════════════
+   BASE RESET & GLOBALS
+   ═══════════════════════════════════════════════════════ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font: var(--text-body);
+  letter-spacing: var(--tracking-normal);
+  color: var(--text-primary);
+  background: var(--bg);
+  min-height: 100vh;
+}
+
+::selection {
+  background: var(--accent-muted);
+  color: var(--text-primary);
+}
+
+input, textarea, button {
+  font-family: var(--font-sans);
+}
+
+/* ═══════════════════════════════════════════════════════
+   SCROLLBAR
+   ═══════════════════════════════════════════════════════ */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-tertiary);
+}
+
+/* ═══════════════════════════════════════════════════════
+   FOCUS STATES (Accessibility)
+   ═══════════════════════════════════════════════════════ */
+
+*:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* ═══════════════════════════════════════════════════════
+   ANIMATIONS
+   ═══════════════════════════════════════════════════════ */
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse-ring {
+  0%   { transform: scale(1); opacity: 0.4; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.4; }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-fade-in {
+  animation: fade-in var(--duration-normal) var(--ease-out) both;
+}
+
+.animate-pulse-ring {
+  animation: pulse-ring 2s var(--ease-out) infinite;
+}
+
+.animate-pulse-dot {
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, var(--surface-alt) 25%, var(--border-light) 50%, var(--surface-alt) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High Contrast */
+@media (prefers-contrast: more) {
+  :root {
+    --text-tertiary: #475569;
+    --border: #94A3B8;
+    --accent: #047857;
+    --accent-light: #FFFFFF;
+    --surface-alt: #FFFFFF;
+  }
+  
+  *, *::before, *::after {
+    box-shadow: none !important;
+  }
+  
+  *:focus-visible {
+    outline: 3px solid #000000;
+  }
+}
