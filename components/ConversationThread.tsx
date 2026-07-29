@@ -9,9 +9,10 @@ import { CrisisAlert } from './CrisisAlert';
 interface ConversationThreadProps {
   messages: ConversationMessage[];
   isLoading: boolean;
+  onSuggestionClick?: (text: string) => void;
 }
 
-export const ConversationThread: React.FC<ConversationThreadProps> = ({ messages, isLoading }) => {
+export const ConversationThread: React.FC<ConversationThreadProps> = ({ messages, isLoading, onSuggestionClick }) => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   // Auto-scroll to bottom when new messages arrive
@@ -72,6 +73,49 @@ export const ConversationThread: React.FC<ConversationThreadProps> = ({ messages
                 
                 {msg.result && (
                   <TriageTimeline result={msg.result} />
+                )}
+                
+                {msg.result?.follow_up_questions && msg.result.follow_up_questions.length > 0 && !isLoading && idx === messages.length - 1 && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.6 }}
+                    style={{
+                      display: 'flex',
+                      flexWrap: 'wrap',
+                      gap: 'var(--space-2)',
+                      marginTop: 'var(--space-4)',
+                      paddingLeft: 'var(--space-4)',
+                    }}
+                  >
+                    {msg.result.follow_up_questions.map((q, i) => (
+                      <button
+                        key={i}
+                        onClick={() => onSuggestionClick?.(q)}
+                        aria-label={`Ask follow up question: ${q}`}
+                        style={{
+                          padding: 'var(--space-2) var(--space-3)',
+                          borderRadius: 'var(--radius-full)',
+                          background: 'var(--surface)',
+                          border: '1px solid var(--border)',
+                          font: 'var(--text-caption)',
+                          color: 'var(--text-secondary)',
+                          cursor: 'pointer',
+                          transition: 'all var(--duration-fast) ease',
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.borderColor = 'var(--accent)';
+                          e.currentTarget.style.color = 'var(--accent)';
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.borderColor = 'var(--border)';
+                          e.currentTarget.style.color = 'var(--text-secondary)';
+                        }}
+                      >
+                        {q}
+                      </button>
+                    ))}
+                  </motion.div>
                 )}
               </div>
             )}

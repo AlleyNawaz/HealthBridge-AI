@@ -33,6 +33,7 @@ export interface TriageResult {
   possible_causes: string[];
   next_steps: string[];
   warning_signs: string[];
+  follow_up_questions?: string[];
   emergency: boolean;
   confidence: number;
   confidence_reasoning?: string;

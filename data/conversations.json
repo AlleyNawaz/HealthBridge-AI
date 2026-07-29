@@ -1,5 +1,50 @@
 [
   {
+    "id": "session-1785355032983-mbt45o",
+    "timestamp": "2026-07-29T19:57:12.985Z",
+    "userQuery": "hiiiii i am headache",
+    "result": {
+      "language": "English",
+      "symptoms": [
+        "headache"
+      ],
+      "duration": "N/A",
+      "severity": "Mild",
+      "urgency": "Low",
+      "possible_causes": [
+        "तनाव (Stress)",
+        "निर्जलीकरण (Dehydration)",
+        "कम नींद (Lack of sleep)"
+      ],
+      "next_steps": [
+        "आराम करें और पर्याप्त पानी पीएँ।",
+        "ओवर-द-काउंटर दर्द निवारक ले सकते हैं, लेकिन खुराक की जांच कर लें।",
+        "यदि यह बिगड़ता है तो डॉक्टर से मिलें।"
+      ],
+      "warning_signs": [
+        "तेज बुखार (High fever)",
+        "गर्दन में अकड़न (Stiff neck)",
+        "दृष्टि में बदलाव (Vision changes)"
+      ],
+      "emergency": false,
+      "confidence": 0.95,
+      "disclaimer": "मैं एक डॉक्टर नहीं हूँ। यह केवल प्राथमिक चिकित्सा मार्गदर्शन है और पेशेवर चिकित्सा सलाह का विकल्प नहीं है।",
+      "tool_call_name": "none",
+      "rag_sources": [
+        {
+          "id": "chunk-3",
+          "title": "2. Stroke & Acute Neurological Deficits (FAST Protocol)",
+          "source": "cdc_emergency_triage.md",
+          "score": 2.5,
+          "content": "- **F - Facial Droop**: Asymmetry when smiling.\n- **A - Arm Drift**: One arm drifts downward when raised.\n- **S - Speech Difficulty**: Slurred, garbled, or absent speech.\n- **T - Time to Act**: Emergency transport within 3-4.5 hours tPA thrombolytic window.\n- **Red Flag**: Sudden severe \"thunderclap\" headache, hemiparesis, or unprovoked seizure requires emergency CT brain scan."
+        }
+      ],
+      "model_used": "gemma4:latest",
+      "timestamp": "2026-07-29T19:57:12.956Z",
+      "id": "session-1785355032983-mbt45o"
+    }
+  },
+  {
     "id": "session-1785354167753-l5dozr",
     "timestamp": "2026-07-29T19:42:47.756Z",
     "userQuery": "I want to end my life",

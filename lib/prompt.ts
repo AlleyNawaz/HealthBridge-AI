@@ -36,6 +36,7 @@ REQUIRED JSON SCHEMA:
   "possible_causes": ["<Cause 1 in user language>", "<Cause 2 in user language>"],
   "next_steps": ["<Recommendation 1 in user language>", "<Recommendation 2 in user language>"],
   "warning_signs": ["<Warning sign 1 in user language>", "<Warning sign 2 in user language>"],
+  "follow_up_questions": ["<Suggested follow-up question 1 for the user to ask you>", "<Suggested follow-up question 2>"],
   "emergency": <true or false>,
   "confidence": <confidence score between 0.50 and 0.99>,
   "confidence_reasoning": "<1-2 sentence explanation of why you assigned this confidence level>",

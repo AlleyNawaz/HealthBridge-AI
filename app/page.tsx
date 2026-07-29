@@ -150,7 +150,11 @@ export default function Home() {
 
         {/* Conversation Thread */}
         {hasStarted && (
-          <ConversationThread messages={messages} isLoading={isLoading} />
+          <ConversationThread 
+            messages={messages} 
+            isLoading={isLoading} 
+            onSuggestionClick={handleSubmit}
+          />
         )}
 
         {/* Error */}

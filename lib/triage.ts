@@ -74,6 +74,7 @@ export async function processTriage(req: TriageRequest): Promise<TriageResult> {
     possible_causes: triageData.possible_causes,
     next_steps: triageData.next_steps,
     warning_signs: triageData.warning_signs,
+    follow_up_questions: triageData.follow_up_questions,
     emergency: triageData.emergency,
     confidence: triageData.confidence,
     confidence_reasoning: triageData.confidence_reasoning,

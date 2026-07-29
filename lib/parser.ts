@@ -9,8 +9,10 @@ export const TriageSchema = z.object({
   possible_causes: z.array(z.string()).default([]),
   next_steps: z.array(z.string()).default([]),
   warning_signs: z.array(z.string()).default([]),
+  follow_up_questions: z.array(z.string()).optional().default([]),
   emergency: z.boolean().default(false),
   confidence: z.number().min(0).max(1).default(0.92),
+  confidence_reasoning: z.string().optional(),
   disclaimer: z.string().default('HealthBridge AI provides health triage guidance only and is not a substitute for professional medical advice.'),
   tool_call: z.enum(['findNearbyHospitals', 'lookupEmergencyContacts', 'lookupFirstAid', 'lookupMedicineInformation', 'saveConversation', 'none']).optional().default('none')
 });
