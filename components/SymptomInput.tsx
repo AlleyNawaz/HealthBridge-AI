@@ -97,8 +97,7 @@ export const SymptomInput: React.FC<SymptomInputProps> = ({ onSubmit, isLoading 
           padding: 'var(--space-2) var(--space-3)',
         }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-1)' }}>
-            {/* Voice Button */}
-            <VoiceButton onResult={(text) => setValue(prev => prev ? prev + ' ' + text : text)} />
+            {/* Toolbar left empty */}
           </div>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)' }}>
@@ -219,75 +218,3 @@ export const SymptomInput: React.FC<SymptomInputProps> = ({ onSubmit, isLoading 
 };
 
 
-/* ── Inline Voice Button ── */
-const VoiceButton: React.FC<{ onResult: (text: string) => void }> = ({ onResult }) => {
-  const [recording, setRecording] = useState(false);
-  const recognitionRef = useRef<any>(null);
-
-  const toggle = () => {
-    if (recording) {
-      recognitionRef.current?.stop();
-      setRecording(false);
-      return;
-    }
-
-    const SR = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
-    if (!SR) return;
-
-    const rec = new SR();
-    recognitionRef.current = rec;
-    rec.continuous = false;
-    rec.interimResults = false;
-
-    rec.onresult = (e: any) => {
-      const text = e.results[0]?.[0]?.transcript;
-      if (text) onResult(text);
-      setRecording(false);
-    };
-    rec.onerror = () => setRecording(false);
-    rec.onend = () => setRecording(false);
-
-    rec.start();
-    setRecording(true);
-  };
-
-  return (
-    <button
-      type="button"
-      onClick={toggle}
-      aria-label={recording ? "Stop voice input" : "Start voice input"}
-      aria-pressed={recording}
-      style={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        width: 32,
-        height: 32,
-        borderRadius: 'var(--radius-md)',
-        border: 'none',
-        background: recording ? 'var(--emergency-light)' : 'transparent',
-        color: recording ? 'var(--emergency)' : 'var(--text-tertiary)',
-        cursor: 'pointer',
-        transition: 'all var(--duration-fast) ease',
-        position: 'relative',
-      }}
-      title="Voice input"
-    >
-      {recording && (
-        <span style={{
-          position: 'absolute',
-          inset: 0,
-          borderRadius: 'var(--radius-md)',
-          border: '2px solid var(--emergency)',
-          opacity: 0.3,
-        }} className="animate-pulse-ring" />
-      )}
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
-        <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
-        <line x1="12" y1="19" x2="12" y2="23"/>
-        <line x1="8" y1="23" x2="16" y2="23"/>
-      </svg>
-    </button>
-  );
-};

@@ -1,5 +1,232 @@
 [
   {
+    "id": "session-1785355198461-5s2j89",
+    "timestamp": "2026-07-29T19:59:58.461Z",
+    "userQuery": "Are you experiencing any other physical symptoms like dizziness or nausea?",
+    "result": {
+      "language": "English",
+      "symptoms": [
+        "headache",
+        "panic attack",
+        "chest pain",
+        "dizziness",
+        "nausea"
+      ],
+      "duration": "N/A (Ongoing)",
+      "severity": "Moderate",
+      "urgency": "High",
+      "possible_causes": [
+        "Panic Attack",
+        "Anxiety Disorder",
+        "Musculoskeletal Pain",
+        "Gastrointestinal Issues"
+      ],
+      "next_steps": [
+        "Take slow, deep breaths to manage anxiety.",
+        "Rest in a calm environment and monitor your symptoms closely.",
+        "If chest pain worsens or is accompanied by shortness of breath, seek immediate medical attention."
+      ],
+      "warning_signs": [
+        "Severe or worsening chest pain (especially radiating)",
+        "Difficulty breathing or severe shortness of breath",
+        "Loss of consciousness"
+      ],
+      "follow_up_questions": [
+        "Does the dizziness happen when you stand up quickly?",
+        "Have you noticed any triggers for these symptoms?"
+      ],
+      "emergency": false,
+      "confidence": 0.95,
+      "confidence_reasoning": "The user's input is a general follow-up question, but by considering the full conversation history (headache, panic attack, chest pain), I can accumulate and refine the symptom list accurately.",
+      "disclaimer": "मैं एक डॉक्टर नहीं हूँ। यह जानकारी केवल प्राथमिक सहायता और मार्गदर्शन के लिए है और पेशेवर चिकित्सा सलाह का विकल्प नहीं है। यदि आपके लक्षण गंभीर हैं, तो कृपया तुरंत आपातकालीन सेवाओं से संपर्क करें।",
+      "tool_call_name": "none",
+      "rag_sources": [
+        {
+          "id": "chunk-2",
+          "title": "1. Acute Myocardial Infarction & Coronary Distress",
+          "source": "cdc_emergency_triage.md",
+          "score": 5,
+          "content": "- **Primary Symptoms**: Retrosternal chest pain or substernal crushing pressure lasting >10 minutes, pain radiating to left shoulder, arm, neck, or jaw.\n- **Associated Markers**: Diaphoresis, dyspnea, nausea, syncope.\n- **Action**: Immediate EMS dispatch (911/112). Patient should remain seated. Administer non-enteric aspirin (160-325 mg chewed) if no contraindications exist. Prepare for immediate ACLS cardiac catheterization."
+        },
+        {
+          "id": "chunk-11",
+          "title": "1. Acute Upper Respiratory Infections & Seasonal Influenza",
+          "source": "who_guidelines.md",
+          "score": 5,
+          "content": "Acute respiratory tract infections are classified based on anatomical location and severity of symptoms:\n- **Mild URI**: Mild fever (<38.5°C), rhinorrhea, sore throat, cough without dyspnea. Recommended management includes oral fluid rehydration, rest, and temperature monitoring.\n- **Severe Acute Respiratory Infection (SARI)**: Fever >=38.5°C accompanied by shortness of breath, tachypnea (respiratory rate >30 breaths/min in adults), or arterial oxygen saturation (SpO2) <92%. Immediate triage to emergency facility required."
+        }
+      ],
+      "model_used": "gemma4:latest",
+      "timestamp": "2026-07-29T19:59:58.460Z",
+      "id": "session-1785355198461-5s2j89"
+    }
+  },
+  {
+    "id": "session-1785355187180-abv4vt",
+    "timestamp": "2026-07-29T19:59:47.180Z",
+    "userQuery": "Have you experienced chest pain with this panic attack?",
+    "result": {
+      "language": "English",
+      "symptoms": [
+        "headache",
+        "panic attack",
+        "chest pain"
+      ],
+      "duration": "N/A",
+      "severity": "Moderate",
+      "urgency": "High",
+      "possible_causes": [
+        "Panic Attack",
+        "Anxiety Disorder",
+        "Muscle Strain"
+      ],
+      "next_steps": [
+        "Try deep breathing exercises.",
+        "Rest in a calm environment.",
+        "Monitor symptoms closely."
+      ],
+      "warning_signs": [
+        "Chest pain that is crushing or lasts longer than 10 minutes.",
+        "Pain radiating to the jaw, arm, or back.",
+        "Difficulty breathing (severe shortness of breath)."
+      ],
+      "follow_up_questions": [
+        "Are you experiencing any other physical symptoms like dizziness or nausea?",
+        "How often do these panic attacks occur?"
+      ],
+      "emergency": false,
+      "confidence": 0.95,
+      "confidence_reasoning": "The user's input is clear and directly relates to the ongoing context (panic attack), allowing for accurate accumulation of symptoms.",
+      "disclaimer": "मैं एक डॉक्टर नहीं हूँ। यह जानकारी केवल शैक्षिक उद्देश्यों के लिए है और पेशेवर चिकित्सा सलाह का विकल्प नहीं है। यदि आपको गंभीर दर्द होता है, तो तुरंत आपातकालीन सेवाओं से संपर्क करें।",
+      "tool_call_name": "none",
+      "rag_sources": [
+        {
+          "id": "chunk-2",
+          "title": "1. Acute Myocardial Infarction & Coronary Distress",
+          "source": "cdc_emergency_triage.md",
+          "score": 7.5,
+          "content": "- **Primary Symptoms**: Retrosternal chest pain or substernal crushing pressure lasting >10 minutes, pain radiating to left shoulder, arm, neck, or jaw.\n- **Associated Markers**: Diaphoresis, dyspnea, nausea, syncope.\n- **Action**: Immediate EMS dispatch (911/112). Patient should remain seated. Administer non-enteric aspirin (160-325 mg chewed) if no contraindications exist. Prepare for immediate ACLS cardiac catheterization."
+        },
+        {
+          "id": "chunk-5",
+          "title": "1. Antipyretics & Analgesics",
+          "source": "mayo_clinic_medicines.md",
+          "score": 5,
+          "content": "- **Acetaminophen (Paracetamol)**: Dosage 500-1000 mg every 4-6 hours as needed (maximum 4000 mg/24 hours for adults). Do not combine with alcohol or hepatotoxic agents.\n- **Ibuprofen (NSAID)**: Dosage 200-400 mg every 4-6 hours with food. Contraindicated in active peptic ulcer disease, severe renal failure, or third-trimester pregnancy."
+        }
+      ],
+      "model_used": "gemma4:latest",
+      "timestamp": "2026-07-29T19:59:47.179Z",
+      "id": "session-1785355187180-abv4vt"
+    }
+  },
+  {
+    "id": "session-1785355176269-28js48",
+    "timestamp": "2026-07-29T19:59:36.269Z",
+    "userQuery": "panic attack",
+    "result": {
+      "language": "English",
+      "symptoms": [
+        "headache",
+        "panic attack"
+      ],
+      "duration": "N/A",
+      "severity": "Moderate",
+      "urgency": "High",
+      "possible_causes": [
+        "Anxiety disorder",
+        "Panic disorder",
+        "Stress"
+      ],
+      "next_steps": [
+        "Try deep breathing exercises (e.g., 4-7-8 technique).",
+        "Ensure you are in a safe, quiet place to rest."
+      ],
+      "warning_signs": [
+        "Chest pain that does not subside.",
+        "Difficulty breathing or shortness of breath.",
+        "Loss of consciousness."
+      ],
+      "follow_up_questions": [
+        "Have you experienced chest pain with this panic attack?",
+        "Are there specific triggers (situations/people) that seem to worsen the attacks?"
+      ],
+      "emergency": false,
+      "confidence": 0.95,
+      "confidence_reasoning": "The input is clear and relates directly to a known medical condition ('panic attack'), allowing for accurate triage guidance while maintaining context from the previous 'headache' symptom.",
+      "disclaimer": "मैं एक डॉक्टर नहीं हूँ। यह जानकारी केवल शैक्षिक उद्देश्यों के लिए है और पेशेवर चिकित्सा सलाह का विकल्प नहीं है। यदि लक्षण गंभीर हैं, तो तुरंत आपातकालीन सहायता लें।",
+      "tool_call_name": "none",
+      "rag_sources": [
+        {
+          "id": "chunk-1",
+          "title": "CDC Emergency Department Triage Protocols & Red-Flag Criteria",
+          "source": "cdc_emergency_triage.md",
+          "score": 0,
+          "content": "# CDC Emergency Department Triage Protocols & Red-Flag Criteria"
+        },
+        {
+          "id": "chunk-2",
+          "title": "1. Acute Myocardial Infarction & Coronary Distress",
+          "source": "cdc_emergency_triage.md",
+          "score": 0,
+          "content": "- **Primary Symptoms**: Retrosternal chest pain or substernal crushing pressure lasting >10 minutes, pain radiating to left shoulder, arm, neck, or jaw.\n- **Associated Markers**: Diaphoresis, dyspnea, nausea, syncope.\n- **Action**: Immediate EMS dispatch (911/112). Patient should remain seated. Administer non-enteric aspirin (160-325 mg chewed) if no contraindications exist. Prepare for immediate ACLS cardiac catheterization."
+        }
+      ],
+      "model_used": "gemma4:latest",
+      "timestamp": "2026-07-29T19:59:36.267Z",
+      "id": "session-1785355176269-28js48"
+    }
+  },
+  {
+    "id": "session-1785355146528-r8h5pf",
+    "timestamp": "2026-07-29T19:59:06.528Z",
+    "userQuery": "headache",
+    "result": {
+      "language": "English",
+      "symptoms": [
+        "headache"
+      ],
+      "duration": "Not specified",
+      "severity": "Mild",
+      "urgency": "Low",
+      "possible_causes": [
+        "Tension headache",
+        "Sinusitis",
+        "Dehydration",
+        "Migraine"
+      ],
+      "next_steps": [
+        "Try resting in a dark, quiet room.",
+        "Drink plenty of water and consider over-the-counter pain relievers (like acetaminophen or ibuprofen) if appropriate for you."
+      ],
+      "warning_signs": [
+        "Sudden, severe 'thunderclap' headache",
+        "Headache accompanied by fever, stiff neck, confusion, or vision changes"
+      ],
+      "follow_up_questions": [
+        "Is this the worst headache you have ever had?",
+        "Does anything specific (like light or noise) make your headache worse?"
+      ],
+      "emergency": false,
+      "confidence": 0.95,
+      "confidence_reasoning": "The input is extremely simple and clear ('headache'), allowing for high confidence in identifying the core symptom.",
+      "disclaimer": "मैं एक डॉक्टर नहीं हूँ। मैं केवल चिकित्सा ट्राइएज सहायता प्रदान करता हूँ और कभी भी निदान या दवाएं निर्धारित नहीं कर सकता। यदि आपके लक्षण बिगड़ते हैं, तो कृपया तुरंत आपातकालीन चिकित्सा सेवा से संपर्क करें।",
+      "tool_call_name": "none",
+      "rag_sources": [
+        {
+          "id": "chunk-3",
+          "title": "2. Stroke & Acute Neurological Deficits (FAST Protocol)",
+          "source": "cdc_emergency_triage.md",
+          "score": 7.5,
+          "content": "- **F - Facial Droop**: Asymmetry when smiling.\n- **A - Arm Drift**: One arm drifts downward when raised.\n- **S - Speech Difficulty**: Slurred, garbled, or absent speech.\n- **T - Time to Act**: Emergency transport within 3-4.5 hours tPA thrombolytic window.\n- **Red Flag**: Sudden severe \"thunderclap\" headache, hemiparesis, or unprovoked seizure requires emergency CT brain scan."
+        }
+      ],
+      "model_used": "gemma4:latest",
+      "timestamp": "2026-07-29T19:59:06.527Z",
+      "id": "session-1785355146528-r8h5pf"
+    }
+  },
+  {
     "id": "session-1785355032983-mbt45o",
     "timestamp": "2026-07-29T19:57:12.985Z",
     "userQuery": "hiiiii i am headache",

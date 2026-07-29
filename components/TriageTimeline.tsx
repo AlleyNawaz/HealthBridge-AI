@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { TriageResult } from '@/types/triage';
+import jsPDF from 'jspdf';
 
 interface TriageTimelineProps {
   result: TriageResult;
@@ -26,24 +27,93 @@ export const TriageTimeline: React.FC<TriageTimelineProps> = ({ result }) => {
     }
   })();
 
-  const handleDownload = async () => {
-    try {
-      const res = await fetch('/api/report', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(result)
-      });
-      if (res.ok) {
-        const blob = await res.blob();
-        const url = window.URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = `healthbridge_report_${Date.now()}.txt`;
-        document.body.appendChild(a);
-        a.click();
-        a.remove();
+  const handleDownload = () => {
+    const doc = new jsPDF();
+    
+    // Header
+    doc.setFontSize(22);
+    doc.setTextColor(16, 185, 129); // Accent color
+    doc.text('HealthBridge AI Triage Report', 14, 20);
+    
+    doc.setFontSize(10);
+    doc.setTextColor(100, 116, 139);
+    doc.text(`Generated on ${new Date().toLocaleString()} by ${result.model_used}`, 14, 28);
+    
+    // Emergency Status
+    if (result.emergency) {
+      doc.setFontSize(14);
+      doc.setTextColor(239, 68, 68); // Red
+      doc.text('EMERGENCY: Immediate Medical Attention Required', 14, 40);
+      doc.text('Call emergency services (e.g., 1122, 911) immediately.', 14, 48);
+    }
+    
+    let yPos = result.emergency ? 58 : 40;
+
+    const checkPageBreak = (neededSpace: number) => {
+      if (yPos + neededSpace > 280) {
+        doc.addPage();
+        yPos = 20;
       }
-    } catch { window.print(); }
+    };
+
+    const addSection = (title: string, items: string[], isList: boolean = true) => {
+      if (!items || items.length === 0) return;
+      checkPageBreak(20);
+      doc.setFontSize(14);
+      doc.setTextColor(15, 23, 42);
+      doc.text(title, 14, yPos);
+      yPos += 6;
+      
+      doc.setFontSize(11);
+      doc.setTextColor(71, 85, 105);
+      
+      items.forEach((item, index) => {
+        const text = isList ? `${index + 1}. ${item}` : `• ${item}`;
+        const lines = doc.splitTextToSize(text, 180);
+        checkPageBreak(lines.length * 5 + 5);
+        doc.text(lines, 14, yPos);
+        yPos += (lines.length * 5) + 2;
+      });
+      yPos += 6;
+    };
+
+    addSection('Identified Symptoms', result.symptoms, false);
+    
+    checkPageBreak(30);
+    doc.setFontSize(14);
+    doc.setTextColor(15, 23, 42);
+    doc.text('Assessment', 14, yPos);
+    yPos += 6;
+    doc.setFontSize(11);
+    doc.setTextColor(71, 85, 105);
+    doc.text(`Urgency: ${result.urgency}`, 14, yPos);
+    yPos += 6;
+    doc.text(`Confidence: ${Math.round(result.confidence * 100)}%`, 14, yPos);
+    yPos += 6;
+    
+    if (result.confidence_reasoning) {
+        const reasoningLines = doc.splitTextToSize(`Reasoning: ${result.confidence_reasoning}`, 180);
+        checkPageBreak(reasoningLines.length * 5 + 5);
+        doc.text(reasoningLines, 14, yPos);
+        yPos += (reasoningLines.length * 5) + 2;
+    }
+    yPos += 6;
+
+    addSection('Possible Considerations', result.possible_causes, false);
+    if (!result.emergency) {
+      addSection('Recommended Next Steps', result.next_steps);
+    } else {
+      addSection('Immediate First Aid Steps', result.next_steps);
+    }
+    addSection('Warning Signs to Watch For', result.warning_signs, false);
+
+    checkPageBreak(20);
+    doc.setFontSize(9);
+    doc.setTextColor(148, 163, 184);
+    const disclaimerLines = doc.splitTextToSize(`Disclaimer: ${result.disclaimer}`, 180);
+    doc.text(disclaimerLines, 14, yPos);
+
+    doc.save(`HealthBridge_Report_${Date.now()}.pdf`);
   };
 
   const handleSpeak = () => {
