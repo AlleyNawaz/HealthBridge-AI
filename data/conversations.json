@@ -1,5 +1,55 @@
 [
   {
+    "id": "session-1785356082752-rlvvc5",
+    "timestamp": "2026-07-29T20:14:42.752Z",
+    "userQuery": "i am uin pain",
+    "result": {
+      "language": "English",
+      "symptoms": [
+        "pain"
+      ],
+      "duration": "Not specified",
+      "severity": "Moderate",
+      "urgency": "Low",
+      "possible_causes": [
+        "Muscle strain",
+        "Digestive issues",
+        "Tension"
+      ],
+      "next_steps": [
+        "Rest and observe the pain.",
+        "Apply a cold compress if it is localized.",
+        "Consider over-the-counter pain relievers (check dosage)."
+      ],
+      "warning_signs": [
+        "Pain that worsens significantly with movement.",
+        "Pain accompanied by numbness or tingling.",
+        "Difficulty breathing."
+      ],
+      "follow_up_questions": [
+        "Is the pain sharp, dull, or throbbing?",
+        "Does anything make the pain better or worse?"
+      ],
+      "emergency": false,
+      "confidence": 0.75,
+      "confidence_reasoning": "The input is extremely vague ('pain'), making it impossible to assess severity or cause accurately, thus lowering confidence.",
+      "disclaimer": "मैं एक डॉक्टर नहीं हूँ। मैं केवल प्राथमिक चिकित्सा सहायता और लक्षण मूल्यांकन प्रदान करता हूँ। यह जानकारी पेशेवर चिकित्सा सलाह का विकल्प नहीं है।",
+      "tool_call": "none",
+      "rag_sources": [
+        {
+          "id": "chunk-2",
+          "title": "1. Acute Myocardial Infarction & Coronary Distress",
+          "source": "cdc_emergency_triage.md",
+          "score": 5,
+          "content": "- **Primary Symptoms**: Retrosternal chest pain or substernal crushing pressure lasting >10 minutes, pain radiating to left shoulder, arm, neck, or jaw.\n- **Associated Markers**: Diaphoresis, dyspnea, nausea, syncope.\n- **Action**: Immediate EMS dispatch (911/112). Patient should remain seated. Administer non-enteric aspirin (160-325 mg chewed) if no contraindications exist. Prepare for immediate ACLS cardiac catheterization."
+        }
+      ],
+      "model_used": "gemma4:latest",
+      "timestamp": "2026-07-29T20:14:42.751Z",
+      "id": "session-1785356082752-rlvvc5"
+    }
+  },
+  {
     "id": "session-1785355711384-u0f1f1",
     "timestamp": "2026-07-29T20:08:31.384Z",
     "userQuery": "i am having panic attack",
