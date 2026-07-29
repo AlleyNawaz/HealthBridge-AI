@@ -16,8 +16,8 @@ export async function processTriage(req: TriageRequest): Promise<TriageResult> {
   // 0. SAFETY FIRST: Pre-screen for mental health crisis
   const safetyResult = screenForCrisis(message);
 
-  // 1. REAL RAG: Vector search top 5 document chunks from /docs
-  const ragResults = searchVectorStore(message, 5);
+  // 1. REAL RAG: Vector search top 2 document chunks from /docs to speed up local inference
+  const ragResults = searchVectorStore(message, 2);
   const ragContextText = ragResults
     .map(r => `[Doc Chunk ID: ${r.chunk.id} | Source: ${r.chunk.sourceFile} | Section: ${r.chunk.title}]\n${r.chunk.content}`)
     .join('\n\n---\n\n');
@@ -35,7 +35,10 @@ export async function processTriage(req: TriageRequest): Promise<TriageResult> {
     ragContextText,
     safetyResult.isCrisis ? safetyResult.safetyPromptAddendum : undefined
   );
-  const userPrompt = buildUserPrompt(message, req.conversationHistory);
+  
+  // Limit history to the last 2 messages (1 turn) to save inference time
+  const limitedHistory = req.conversationHistory?.slice(-2) || [];
+  const userPrompt = buildUserPrompt(message, limitedHistory);
 
   // 4. REAL OLLAMA GEMMA 4 CALL: Send prompt directly to Ollama REST API
   const rawLLMOutput = await generateGemmaResponse(sysPrompt, userPrompt, modelToUse);
