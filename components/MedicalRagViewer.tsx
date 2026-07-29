@@ -8,8 +8,8 @@ interface MedicalRagViewerProps {
     id: string;
     title: string;
     source: string;
-    relevance: string;
-    guidanceText?: string;
+    score: number;
+    content: string;
   }>;
 }
 
@@ -58,12 +58,12 @@ export const MedicalRagViewer: React.FC<MedicalRagViewerProps> = ({ sources }) =
                 <span className="font-bold text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded">
                   {src.source} Guidance
                 </span>
-                <span className="text-slate-500 font-medium">{src.relevance}</span>
+                <span className="text-slate-500 font-medium">Score: {src.score}</span>
               </div>
               <h5 className="font-bold text-slate-900 text-sm mb-1">{src.title}</h5>
-              {src.guidanceText && (
+              {src.content && (
                 <p className="text-xs text-slate-600 leading-relaxed font-medium">
-                  {src.guidanceText}
+                  {src.content}
                 </p>
               )}
             </div>

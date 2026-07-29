@@ -21,7 +21,7 @@ export const ToolResultsView: React.FC<ToolResultsViewProps> = ({ toolCall }) =>
         <div className="flex items-center space-x-3">
           <div className="p-2.5 bg-emerald-500/20 text-emerald-400 rounded-xl border border-emerald-500/30">
             {toolName === 'findNearbyHospitals' && <Hospital className="w-6 h-6" />}
-            {toolName === 'getEmergencyContacts' && <PhoneCall className="w-6 h-6" />}
+            {toolName === 'lookupEmergencyContacts' && <PhoneCall className="w-6 h-6" />}
             {toolName === 'lookupFirstAid' && <HeartHandshake className="w-6 h-6" />}
           </div>
           <div>
@@ -32,7 +32,7 @@ export const ToolResultsView: React.FC<ToolResultsViewProps> = ({ toolCall }) =>
             </div>
             <h3 className="text-xl font-bold text-white mt-1">
               {toolName === 'findNearbyHospitals' && 'Nearby Emergency Medical Facilities'}
-              {toolName === 'getEmergencyContacts' && 'Emergency Dispatch Directory'}
+              {toolName === 'lookupEmergencyContacts' && 'Emergency Dispatch Directory'}
               {toolName === 'lookupFirstAid' && `First-Aid Protocol: ${output.condition || 'Emergency Care'}`}
             </h3>
           </div>
@@ -79,7 +79,7 @@ export const ToolResultsView: React.FC<ToolResultsViewProps> = ({ toolCall }) =>
       )}
 
       {/* Render Output: Emergency Contacts */}
-      {toolName === 'getEmergencyContacts' && output.specializedHotlines && (
+      {toolName === 'lookupEmergencyContacts' && output.specializedHotlines && (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
           {output.specializedHotlines.map((hotline: any, idx: number) => (
             <div key={idx} className="bg-slate-800/80 p-4 rounded-2xl border border-slate-700 flex items-center justify-between">

@@ -79,7 +79,7 @@ export async function processTriage(req: TriageRequest): Promise<TriageResult> {
     confidence: triageData.confidence,
     confidence_reasoning: triageData.confidence_reasoning,
     disclaimer: triageData.disclaimer,
-    tool_call_name: selectedToolName,
+    tool_call: selectedToolName,
     tool_result: toolResult,
     rag_sources: ragResults.map(r => ({
       id: r.chunk.id,

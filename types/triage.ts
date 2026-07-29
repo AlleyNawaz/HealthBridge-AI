@@ -1,6 +1,15 @@
 export type UrgencyLevel = 'Emergency' | 'High' | 'Moderate' | 'Low';
 export type SeverityLevel = 'Mild' | 'Moderate' | 'Severe' | 'Critical';
 
+export interface RagGuideline {
+  id: string;
+  title: string;
+  category: string;
+  source: string;
+  content: string;
+  keySymptoms: string[];
+}
+
 export interface TriageRequest {
   message: string;
   model?: string;
@@ -38,7 +47,7 @@ export interface TriageResult {
   confidence: number;
   confidence_reasoning?: string;
   disclaimer: string;
-  tool_call_name?: string;
+  tool_call?: string;
   tool_result?: ToolCallResult;
   rag_sources?: Array<{
     id: string;

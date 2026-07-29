@@ -124,7 +124,8 @@ export const ConversationThread: React.FC<ConversationThreadProps> = ({ messages
               </div>
             )}
           </motion.div>
-        ))}
+          );
+        })}
       </AnimatePresence>
       <div ref={containerRef} style={{ height: 1 }} />
     </div>
