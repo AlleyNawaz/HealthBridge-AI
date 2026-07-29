@@ -8,13 +8,31 @@ export const HospitalMap: React.FC = () => {
   const [locationName, setLocationName] = useState('');
 
   useEffect(() => {
-    fetch('/api/hospitals?address=Islamabad')
+    // 1. Try IP-based Geolocation first
+    fetch('https://get.geojs.io/v1/ip/geo.json')
+      .then(r => r.json())
+      .then(ipData => {
+        const lat = ipData.latitude;
+        const lng = ipData.longitude;
+        const city = ipData.city || 'Unknown Location';
+        
+        return fetch(`/api/hospitals?lat=${lat}&lng=${lng}&address=${encodeURIComponent(city)}`);
+      })
       .then(r => r.json())
       .then(d => {
         setHospitals(d.hospitals || []);
         setLocationName(d.queryLocation || '');
       })
-      .catch(() => {});
+      .catch(() => {
+        // Fallback if IP lookup fails
+        fetch('/api/hospitals?address=Islamabad')
+          .then(r => r.json())
+          .then(d => {
+            setHospitals(d.hospitals || []);
+            setLocationName(d.queryLocation || '');
+          })
+          .catch(() => {});
+      });
 
     if (typeof window !== 'undefined' && navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
