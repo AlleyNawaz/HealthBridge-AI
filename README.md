@@ -1,138 +1,129 @@
-# HealthBridge AI 🩺
-### *Multilingual AI Health Triage Assistant Powered by Gemma 4*
+# HealthBridge AI
 
-Built specifically for the **Build with Gemma 4** Hackathon.
+HealthBridge AI is a venture-scale, multilingual clinical health triage platform powered by Gemma 4. Designed as an AI healthcare operating system, it aims to reduce unnecessary suffering by helping people receive safe, evidence-informed health triage in their native language. It bridges the gap between patients, emergency care, and clinical resources, always prioritizing user safety, trust, and transparency.
 
----
-
-## 🌟 Project Architecture
-
-**HealthBridge AI** is an enterprise-grade clinical health triage application powered by **local Gemma 4 AI reasoning**. It allows users to speak or type symptoms in their native language (English, Hindi, Urdu, Bengali, Tamil, Punjabi, Spanish, French, etc.) and receive immediate evidence-based medical triage, emergency classification, WHO/CDC RAG guidance, function calling, geolocation hospital maps, and downloadable reports.
-
-> **CRITICAL MEDICAL DISCLAIMER**: HealthBridge AI is strictly a medical triage and safety guidance assistant. It **DOES NOT diagnose diseases** or prescribe medications. It prioritizes user safety, detects red-flag emergency symptoms, and recommends professional care whenever appropriate.
+**Disclaimer:** This system is not a replacement for licensed medical professionals. It provides triage and guidance, not medical diagnoses.
 
 ---
 
-## 🚀 Architectural Highlights
+## Core Mission and Philosophy
 
-* **🧠 Uncompromising Gemma 4 Intelligence**: Gemma 4 (`gemma4:latest`) handles language auto-detection, symptom extraction, urgency scoring, confidence calculations, safety checks, and structured JSON output.
-* **📚 Real RAG Pipeline (`lib/vector-store.ts`)**: Reads clinical document chunks from `/docs` (WHO, CDC, NHS, Mayo Clinic guidelines), computes TF-IDF / term overlap vector similarity scores, and injects the top 5 retrieved clinical guidance chunks directly into Gemma 4's prompt.
-* **⚡ Real Gemma 4 Tool / Function Calling (`lib/tools.ts`)**: Gemma 4 autonomously triggers native functions:
-  * `findNearbyHospitals()`: Locates emergency room facilities, phone numbers, and wait times.
-  * `lookupEmergencyContacts()`: Retrieves emergency dispatch hotlines (911, 112, 108, 999).
-  * `lookupFirstAid()`: Retrieves step-by-step first-aid protocols.
-  * `lookupMedicineInformation()`: Provides OTC medication safety guidelines.
-  * `saveConversation()`: Saves session history to database.
-* **🚨 Red-Flag Emergency Alert System**: Triggers a fullscreen high-priority red alert overlay when Gemma 4 classifies a condition as a critical emergency.
-* **🗺️ Geolocation & Google Maps**: Uses browser GPS coordinates (`navigator.geolocation`) and Google Maps directions to locate nearest trauma ER centers.
-* **💾 Persistent Session Database (`lib/db.ts`)**: Stores triage sessions in persistent JSON database, allowing users to re-open and review past triage sessions.
-* **📄 Downloadable Triage Reports (`app/api/report/route.ts`)**: Generates printable medical triage summary documents.
-* **🎙️ Voice Speech-to-Text & Text-to-Speech**: Integrated browser MediaRecorder & Web Speech API for voice dictation and audio read-aloud playback.
+The primary mission is to improve healthcare accessibility globally. Every feature is designed to solve real human problems, focusing on:
+* **Safety:** Pre-screening for mental health crises and critical emergencies before any AI inference.
+* **Accessibility:** Multilingual support (English, Hindi, Urdu, Bengali, Tamil, Spanish), voice input, high contrast mode, and keyboard navigability.
+* **Trust & Transparency:** Explainable AI with confidence scores, reasoning explanations, and expandable clinical evidence sources.
+* **Reliability:** Built on robust, offline-capable open-source AI (Gemma 4 via Ollama) and grounded by Retrieval-Augmented Generation (RAG) using official WHO and CDC guidelines.
 
 ---
 
-## 📁 Repository Structure
+## System Architecture
 
-```text
-healthbridge-ai/
-├── docs/
-│   ├── who_guidelines.md         # WHO respiratory & pediatric guidelines
-│   ├── cdc_emergency_triage.md   # CDC acute cardiac & stroke protocols
-│   ├── nhs_first_aid.md          # NHS traumatic wound & CPR protocols
-│   └── mayo_clinic_medicines.md  # OTC medication guidance
-├── lib/
-│   ├── vector-store.ts           # RAG TF-IDF & cosine vector search engine
-│   ├── ollama.ts                 # Strict REST API client for Ollama (gemma4:latest)
-│   ├── prompt.ts                 # Gemma 4 system prompt builder & strict Zod JSON schema
-│   ├── parser.ts                 # Zod schema validation & dirty JSON parser
-│   ├── tools.ts                  # Execution handlers for Gemma tools
-│   ├── db.ts                     # Database store for session history
-│   └── triage.ts                 # Core triage orchestrator
-├── app/
-│   ├── api/
-│   │   ├── triage/route.ts       # POST /api/triage handler
-│   │   ├── history/route.ts      # GET & DELETE history session handler
-│   │   ├── hospitals/route.ts    # Geolocation hospital locator
-│   │   └── report/route.ts       # PDF / summary report generation
-│   ├── globals.css               # Clinical dark/light theme CSS
-│   ├── layout.tsx                # Next.js 15 root layout
-│   └── page.tsx                  # Single-screen clinical workspace
-├── components/
-│   ├── Header.tsx                # Clinical navbar with Ollama status
-│   ├── SymptomForm.tsx           # Voice input & multilingual symptom form
-│   ├── ResultCard.tsx            # 7-Card grid layout for triage results
-│   ├── EmergencyOverlay.tsx      # Fullscreen emergency alert overlay
-│   ├── HospitalMap.tsx           # Geolocation & Google Maps finder
-│   ├── HistorySidebar.tsx        # Persistent session history drawer
-│   ├── VoiceController.tsx       # Speech-to-Text & Text-to-Speech audio
-│   └── Disclaimer.tsx            # Mandatory medical safety disclaimer
-└── README.md                     # Technical submission document
-```
+HealthBridge AI utilizes a complex, multi-layered architecture to ensure clinical safety and response accuracy.
+
+### 1. The Safety Layer
+Before the language model processes a query, a deterministic pre-screening layer intercepts the input. Using multi-language pattern matching, it detects high-risk intents (e.g., suicidal ideation, self-harm). If triggered, the system immediately surfaces a Crisis Alert providing confidential, regional crisis hotlines, and forces the language model into a strict de-escalation protocol.
+
+### 2. Retrieval-Augmented Generation (RAG)
+To prevent hallucinations, the system does not rely solely on the model's parametric memory. It performs vector searches across a curated dataset of medical guidelines (WHO, CDC). The retrieved text chunks are injected directly into the Gemma 4 system prompt, grounding the AI's clinical recommendations in verified science. Users can view the exact source text referenced by the model.
+
+### 3. Gemma 4 Orchestration
+Gemma 4 acts as the central intelligence engine, responsible for:
+* Multilingual symptom extraction
+* Urgency and severity assessment
+* Contextual conversation memory across multi-turn interactions
+* Determining confidence levels and providing reasoning
+* Function and tool calling (e.g., triggering the nearby hospital locator during emergencies)
+
+### 4. Interactive Frontend
+Built with Next.js 15 and Framer Motion, the user interface is designed to be calming, professional, and highly responsive. It features a conversational thread interface, interactive hospital maps, and dynamic, progressive timeline generation.
 
 ---
 
-## 💻 Local Setup & Running Instructions
+## Features
 
-### 1. Start Ollama with Gemma 4
+### Context-Aware Conversational Triage
+The system maintains a stateful conversation thread. Users can provide symptoms iteratively (e.g., mentioning a fever, then following up with a description of a rash), and the model will synthesize the complete history to generate an updated, holistic assessment.
 
-Ensure Ollama is running locally on `http://localhost:11434`:
+### Step-by-Step Emergency Protocol
+If Gemma flags a query as a critical emergency, the UI bypasses standard triage and immediately presents a guided emergency protocol. This includes a prominent one-tap action to call emergency services and lists the top immediate first-aid steps to perform while waiting for medical professionals.
 
-```bash
-ollama run gemma4
-```
+### Explainable AI and Transparency
+The platform demystifies AI decision-making. Every triage result includes:
+* **Confidence Score:** A calculated percentage of the model's certainty.
+* **Reasoning:** A plain-text explanation of exactly why the model arrived at its conclusion.
+* **Evidence Sources:** Expandable accordion components detailing the exact clinical documents referenced during the RAG process.
 
-### 2. Launch Development Server
-
-```bash
-cd c:/Users/alley/Developer/healthbridge-ai
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) in your browser.
-
----
-
-## 🧪 API Specification
-
-### `POST /api/triage`
-
-**Request Body:**
-```json
-{
-  "message": "I have severe cough and fever for three days."
-}
-```
-
-**Response Payload (Generated Live by Gemma 4):**
-```json
-{
-  "language": "English",
-  "symptoms": ["severe cough", "fever"],
-  "duration": "3 days",
-  "severity": "Moderate",
-  "urgency": "Moderate",
-  "possible_causes": [
-    "Acute viral upper respiratory infection",
-    "Influenza (Flu)"
-  ],
-  "next_steps": [
-    "Ensure adequate rest and stay hydrated.",
-    "Use over-the-counter fever reducers as directed."
-  ],
-  "warning_signs": [
-    "Difficulty breathing or shortness of breath (dyspnea)",
-    "Chest pain"
-  ],
-  "emergency": false,
-  "confidence": 0.94,
-  "disclaimer": "HealthBridge AI provides health triage guidance only and is not a substitute for professional medical advice.",
-  "model_used": "gemma4:latest",
-  "timestamp": "2026-07-29T18:52:31.167Z"
-}
-```
+### Accessibility Enhancements
+The application is designed to be usable by everyone.
+* Comprehensive ARIA labels, roles, and focus management for screen readers.
+* Integrated voice input for users with limited mobility or low literacy.
+* System-aware High Contrast Mode support (`prefers-contrast: more`), which optimizes the interface for visually impaired users by removing soft shadows and deepening text colors.
 
 ---
 
-## 📄 License
+## Technical Stack
 
-Distributed under the MIT License. Built for the **Build with Gemma 4** Hackathon.
+* **Frontend:** Next.js 15, React 19, TypeScript, Vanilla CSS, Framer Motion
+* **Backend:** Next.js App Router (API Routes)
+* **AI & Inference:** Ollama (Local Gemma 4 model)
+* **Validation:** Zod for strict JSON schema enforcement
+* **Mapping:** Leaflet and React-Leaflet
+* **Styling:** Custom 8-point grid design system using Inter Variable fonts
+
+---
+
+## Getting Started
+
+### Prerequisites
+
+1. **Node.js**: Ensure Node.js is installed.
+2. **Ollama**: You must have Ollama installed and running locally.
+3. **Gemma 4**: Pull the Gemma 4 model via Ollama.
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/AlleyNawaz/HealthBridge-AI.git
+   cd HealthBridge-AI
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Start the Ollama service and load the model (in a separate terminal):
+   ```bash
+   ollama run gemma4
+   ```
+
+4. Run the development server:
+   ```bash
+   npm run dev
+   # Or use the provided dev.bat script on Windows
+   ```
+
+5. Open `http://localhost:3000` with your browser to see the application.
+
+---
+
+## Project Structure
+
+* `/app`: Next.js 15 App Router structure, containing the main layout, page, and API routes.
+* `/components`: Reusable React components (e.g., `ConversationThread`, `TriageTimeline`, `CrisisAlert`, `HospitalMap`).
+* `/lib`: Core backend logic, including the `triage` orchestrator, `safety` layer, `prompt` builder, and `vector-store` mock.
+* `/types`: TypeScript interface definitions for strict type-checking across the application.
+* `/docs`: Curated clinical guidelines used by the RAG system.
+
+---
+
+## Design Philosophy
+
+The interface is engineered to reduce user anxiety. It avoids clinical coldness and overwhelming diagnostic panels in favor of a calm, elegant, and reassuring aesthetic. Every component decision, from the restrained color palette to the smooth Framer Motion transitions, is intentional and designed to build user trust.
+
+---
+
+## License
+
+This project is proprietary and built for the Build with Gemma 4 initiative.
