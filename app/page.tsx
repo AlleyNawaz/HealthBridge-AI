@@ -202,7 +202,7 @@ export default function Home() {
         </AnimatePresence>
 
         {/* Hospital Map — only when the latest result implies a location search or emergency */}
-        {lastResult && !isLoading && (lastResult.emergency || lastResult.tool_call_name === 'findNearbyHospitals') && (
+        {lastResult && !isLoading && (lastResult.emergency || lastResult.tool_call === 'findNearbyHospitals') && (
           <HospitalMap />
         )}
 
@@ -222,7 +222,7 @@ export default function Home() {
         width: '100%',
       }}>
         <div style={{ width: '100%', maxWidth: 'var(--content-width)' }}>
-          <SymptomInput onSubmit={handleSubmit} isLoading={isLoading} />
+          <SymptomInput onSubmit={handleSubmit} isLoading={isLoading} hideExamples={hasStarted} />
         </div>
       </div>
 

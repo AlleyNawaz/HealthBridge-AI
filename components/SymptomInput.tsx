@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 interface SymptomInputProps {
   onSubmit: (message: string) => void;
   isLoading: boolean;
+  hideExamples?: boolean;
 }
 
 const EXAMPLES = [
@@ -15,7 +16,7 @@ const EXAMPLES = [
   'Severe chest pain and difficulty breathing',
 ];
 
-export const SymptomInput: React.FC<SymptomInputProps> = ({ onSubmit, isLoading }) => {
+export const SymptomInput: React.FC<SymptomInputProps> = ({ onSubmit, isLoading, hideExamples }) => {
   const [value, setValue] = useState('');
   const [focused, setFocused] = useState(false);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
@@ -165,7 +166,7 @@ export const SymptomInput: React.FC<SymptomInputProps> = ({ onSubmit, isLoading 
 
       {/* Example pills */}
       <AnimatePresence>
-        {!value && (
+        {!value && !hideExamples && (
           <motion.div
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
