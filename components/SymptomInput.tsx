@@ -31,6 +31,7 @@ export const SymptomInput: React.FC<SymptomInputProps> = ({ onSubmit, isLoading 
   const handleSubmit = () => {
     if (!value.trim() || isLoading) return;
     onSubmit(value.trim());
+    setValue('');
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
