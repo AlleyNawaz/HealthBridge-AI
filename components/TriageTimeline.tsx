@@ -1,10 +1,8 @@
 'use client';
 
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { TriageResult } from '@/types/triage';
-import jsPDF from 'jspdf';
-import html2canvas from 'html2canvas';
 
 interface TriageTimelineProps {
   result: TriageResult;
@@ -17,7 +15,6 @@ const fadeUp = {
 
 export const TriageTimeline: React.FC<TriageTimelineProps> = ({ result }) => {
   const [expandedSource, setExpandedSource] = useState<string | null>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
 
   const urgencyColor = (() => {
     switch (result.urgency) {
@@ -29,35 +26,8 @@ export const TriageTimeline: React.FC<TriageTimelineProps> = ({ result }) => {
     }
   })();
 
-  const handleDownload = async () => {
-    if (!containerRef.current) return;
-    try {
-      const canvas = await html2canvas(containerRef.current, { scale: 2, useCORS: true });
-      const imgData = canvas.toDataURL('image/png');
-      
-      const doc = new jsPDF({ orientation: 'portrait', unit: 'px', format: 'a4' });
-      const pdfWidth = doc.internal.pageSize.getWidth();
-      const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
-      const pageHeight = doc.internal.pageSize.getHeight();
-      
-      let heightLeft = pdfHeight;
-      let position = 0;
-      
-      doc.addImage(imgData, 'PNG', 0, position, pdfWidth, pdfHeight);
-      heightLeft -= pageHeight;
-      
-      while (heightLeft >= 0) {
-        position = heightLeft - pdfHeight;
-        doc.addPage();
-        doc.addImage(imgData, 'PNG', 0, position, pdfWidth, pdfHeight);
-        heightLeft -= pageHeight;
-      }
-      
-      doc.save(`HealthBridge_Report_${Date.now()}.pdf`);
-    } catch (error) {
-      console.error('PDF generation failed:', error);
-      window.print();
-    }
+  const handleDownload = () => {
+    window.print();
   };
 
   const handleSpeak = () => {
@@ -70,7 +40,6 @@ export const TriageTimeline: React.FC<TriageTimelineProps> = ({ result }) => {
 
   return (
     <motion.div
-      ref={containerRef}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.4 }}
@@ -78,7 +47,6 @@ export const TriageTimeline: React.FC<TriageTimelineProps> = ({ result }) => {
         width: '100%',
         maxWidth: 'var(--content-width)',
         margin: '0 auto',
-        background: 'var(--bg)', // Important for html2canvas to not render transparent bg
       }}
     >
       {/* Emergency Protocol */}
@@ -197,9 +165,9 @@ export const TriageTimeline: React.FC<TriageTimelineProps> = ({ result }) => {
               · {result.model_used}
             </span>
           </div>
-          <div style={{ display: 'flex', gap: 'var(--space-2)' }}>
+          <div className="no-print" style={{ display: 'flex', gap: 'var(--space-2)' }}>
             <ActionBtn label="Listen" onClick={handleSpeak} />
-            <ActionBtn label="Download" onClick={handleDownload} />
+            <ActionBtn label="Download PDF" onClick={handleDownload} />
           </div>
         </div>
 

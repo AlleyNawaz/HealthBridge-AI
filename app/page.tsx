@@ -103,12 +103,14 @@ export default function Home() {
       display: 'flex',
       flexDirection: 'column',
     }}>
-      <Header
-        ollamaConnected={true}
-        onHistoryClick={() => setShowHistory(true)}
-        historyCount={historyCount}
-        onLogoClick={handleReset}
-      />
+      <div className="no-print">
+        <Header
+          ollamaConnected={true}
+          onHistoryClick={() => setShowHistory(true)}
+          historyCount={historyCount}
+          onLogoClick={handleReset}
+        />
+      </div>
 
       <main style={{
         flex: 1,
@@ -124,7 +126,7 @@ export default function Home() {
 
         {/* Title — only when no results */}
         {!hasStarted && (
-          <div style={{
+          <div className="no-print" style={{
             textAlign: 'center',
             marginBottom: 'var(--space-10)',
           }}>
@@ -203,13 +205,15 @@ export default function Home() {
 
         {/* Hospital Map — only when the latest result implies a location search or emergency */}
         {lastResult && !isLoading && (lastResult.emergency || lastResult.tool_call === 'findNearbyHospitals') && (
-          <HospitalMap />
+          <div className="no-print">
+            <HospitalMap />
+          </div>
         )}
 
       </main>
 
       {/* Input - fixed at bottom if started, inline if not */}
-      <div style={{
+      <div className="no-print" style={{
         position: hasStarted ? 'fixed' : 'relative',
         bottom: hasStarted ? 0 : 'auto',
         left: 0,

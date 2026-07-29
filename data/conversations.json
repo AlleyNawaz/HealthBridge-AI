@@ -1,5 +1,61 @@
 [
   {
+    "id": "session-1785355480515-lb9lrf",
+    "timestamp": "2026-07-29T20:04:40.515Z",
+    "userQuery": "i am having panic attack",
+    "result": {
+      "language": "English",
+      "symptoms": [
+        "panic attack"
+      ],
+      "duration": "Not specified",
+      "severity": "Moderate",
+      "urgency": "High",
+      "possible_causes": [
+        "Anxiety disorder",
+        "Stress or panic episode",
+        "Caffeine intake"
+      ],
+      "next_steps": [
+        "Try deep breathing exercises (e.g., 4-7-8 method).",
+        "Sit in a calm, quiet place and focus on your breath."
+      ],
+      "warning_signs": [
+        "Chest pain that does not subside.",
+        "Difficulty breathing that worsens rapidly.",
+        "Signs of stroke (slurred speech, facial drooping)."
+      ],
+      "follow_up_questions": [
+        "Have you experienced this before?",
+        "Are you currently taking any medications for anxiety?"
+      ],
+      "emergency": false,
+      "confidence": 0.95,
+      "confidence_reasoning": "The symptom 'panic attack' is clear and well-defined, allowing for a high degree of confidence in the triage assessment.",
+      "disclaimer": "मैं एक डॉक्टर नहीं हूँ। यह जानकारी केवल प्राथमिक ट्राइएज सहायता है और पेशेवर चिकित्सा सलाह का विकल्प नहीं है। यदि लक्षण गंभीर हैं, तो तुरंत आपातकालीन सेवाओं से संपर्क करें।",
+      "tool_call_name": "none",
+      "rag_sources": [
+        {
+          "id": "chunk-1",
+          "title": "CDC Emergency Department Triage Protocols & Red-Flag Criteria",
+          "source": "cdc_emergency_triage.md",
+          "score": 0,
+          "content": "# CDC Emergency Department Triage Protocols & Red-Flag Criteria"
+        },
+        {
+          "id": "chunk-2",
+          "title": "1. Acute Myocardial Infarction & Coronary Distress",
+          "source": "cdc_emergency_triage.md",
+          "score": 0,
+          "content": "- **Primary Symptoms**: Retrosternal chest pain or substernal crushing pressure lasting >10 minutes, pain radiating to left shoulder, arm, neck, or jaw.\n- **Associated Markers**: Diaphoresis, dyspnea, nausea, syncope.\n- **Action**: Immediate EMS dispatch (911/112). Patient should remain seated. Administer non-enteric aspirin (160-325 mg chewed) if no contraindications exist. Prepare for immediate ACLS cardiac catheterization."
+        }
+      ],
+      "model_used": "gemma4:latest",
+      "timestamp": "2026-07-29T20:04:40.514Z",
+      "id": "session-1785355480515-lb9lrf"
+    }
+  },
+  {
     "id": "session-1785355339607-2h34ab",
     "timestamp": "2026-07-29T20:02:19.607Z",
     "userQuery": "i am having panic attack",

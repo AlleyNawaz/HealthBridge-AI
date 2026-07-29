@@ -35,18 +35,21 @@ export const ConversationThread: React.FC<ConversationThreadProps> = ({ messages
       paddingBottom: 'var(--space-10)',
     }}>
       <AnimatePresence initial={false}>
-        {messages.map((msg, idx) => (
-          <motion.div
-            key={`${msg.timestamp}-${idx}`}
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: msg.role === 'user' ? 'flex-end' : 'flex-start',
-            }}
-          >
+        {messages.map((msg, idx) => {
+          const isUser = msg.role === 'user';
+          return (
+            <motion.div
+              key={`${msg.timestamp}-${idx}`}
+              className={isUser ? "no-print" : ""}
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: isUser ? 'flex-end' : 'flex-start',
+              }}
+            >
             {msg.role === 'user' ? (
               <div style={{
                 background: 'var(--surface)',
@@ -77,6 +80,7 @@ export const ConversationThread: React.FC<ConversationThreadProps> = ({ messages
                 
                 {msg.result?.follow_up_questions && msg.result.follow_up_questions.length > 0 && !isLoading && idx === messages.length - 1 && (
                   <motion.div
+                    className="no-print"
                     initial={{ opacity: 0, y: 8 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.6 }}
